@@ -1,0 +1,61 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: talentiq
+  namespace: talentiq-prod
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: talentiq
+  template:
+    metadata:
+      labels:
+        app: talentiq
+    spec:
+      containers:
+        - name: talentiq
+          # The parameter below is replaced during circle build
+          image: gcr.io/hmm-dev/talentiq:${parameters.tag}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "0.5"
+            requests:
+              memory: "256Mi"
+              cpu: "0.1"
+          envFrom:
+            - configMapRef:
+                name: talentiq-config
+            - secretRef:
+                name: talentiq-secrets
+
+          readinessProbe:
+            httpGet:
+              path: /_health/ready
+              port: 8080
+              scheme: HTTP
+
+          livenessProbe:
+            httpGet:
+              path: /_health/alive
+              port: 8080
+              scheme: HTTP
+
+          env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/config/GCP_SERVICE_ACCOUNT_KEY"
+          volumeMounts:
+            - name: gcp-key
+              mountPath: "/config"
+              readOnly: true
+      volumes:
+        - name: gcp-key
+          secret:
+            secretName: talentiq-secrets

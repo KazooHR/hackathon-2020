@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: talentiq-prod
+  labels:
+    name: talentiq-prod

@@ -1,0 +1,7 @@
+query HelloWorld {
+  hello
+}
+
+query WhatTime {
+  time
+}

@@ -1,0 +1,14 @@
+scalar DateTime
+
+type SlackMessage {
+  type: String
+  channel: String
+  user: String
+  text: String
+  ts: String
+}
+
+type Query {
+  hello: String
+  time: DateTime
+}

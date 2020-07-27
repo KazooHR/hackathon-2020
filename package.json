@@ -1,0 +1,42 @@
+{
+  "name": "talentiq",
+  "version": "1.0.0",
+  "description": "Talent IQ: Real-time 360 Feedback",
+  "author": "2020 Hackathon Team!",
+  "homepage": "https://github.com/KazooHR/hackathon-2020",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "generate": "graphql-codegen --config codegen.yml",
+    "postinstall": "yarn generate",
+    "start": "concurrently \"yarn:start:web\" \"yarn:start:server\"",
+    "start:web": "yarn --cwd=web start",
+    "start:server": "yarn --cwd=server start",
+    "start:in-container": "yarn --cwd=server start:in-container",
+    "build:web": "yarn --cwd=web build"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.13.5",
+    "@graphql-codegen/typescript": "^1.13.5",
+    "@graphql-codegen/typescript-operations": "^1.13.5",
+    "@graphql-codegen/typescript-react-apollo": "^1.13.5",
+    "@graphql-codegen/typescript-resolvers": "^1.13.5",
+    "concurrently": "^5.2.0",
+    "graphql": "^15.3.0",
+    "graphql-config": "^3.0.2",
+    "graphql-tag": "^2.10.4",
+    "prettier": "^2.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KazooHR/hackathon-2020.git"
+  },
+  "keywords": [
+    "react",
+    "typescript"
+  ],
+  "workspaces": [
+    "server",
+    "web"
+  ]
+}

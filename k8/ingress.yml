@@ -1,0 +1,22 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: talentiq-ingress
+  namespace: talentiq-prod
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: production-issuer
+spec:
+  tls:
+    - hosts:
+        - "talentiq.production.kazoohr.io"
+      secretName: talentiq-cert-secret
+  rules:
+    - host: "talentiq.production.kazoohr.io"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: talentiq-service
+              servicePort: 8080
