@@ -17,8 +17,8 @@ const AuthContext = React.createContext<AuthContextState>({
 export const useAuth = () => React.useContext(AuthContext);
 
 export const AuthContextProvider: React.FC = (props) => {
-  const [user, setUser] = React.useState<User>();
-  const [loading, setLoading] = React.useState(false);
+  // const [user, setUser] = React.useState<User>();
+  // const [loading, setLoading] = React.useState(false);
 
   // React.useEffect(() => {
   //   auth.onAuthStateChanged((u) => {
@@ -33,7 +33,7 @@ export const AuthContextProvider: React.FC = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ loading, loggedIn: user !== undefined, user }}
+      value={{ loading: false, loggedIn: false, user: undefined }}
     >
       {props.children}
     </AuthContext.Provider>
