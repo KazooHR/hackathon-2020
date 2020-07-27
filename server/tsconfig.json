@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "ES2018",
     "module": "commonjs",
@@ -9,6 +8,11 @@
     "strictPropertyInitialization": false,
     "baseUrl": ".",
     "outDir": "build",
-    "sourceRoot": "src"
+    "sourceRoot": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true
   }
 }
