@@ -101,8 +101,9 @@ jobs:
       - run:
           name: Tell spinnaker to deploy
           command: |
-            chmod +x ./.circleci/deploy.sh
-            ./.circleci/deploy.sh
+            cd .circleci
+            chmod +x .deploy.sh
+            ./deploy.sh
 
 workflows:
   version: 2
