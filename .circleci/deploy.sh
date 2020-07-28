@@ -1,5 +1,5 @@
 #!/bin/sh
-$PAYLOAD=`echo '{
+PAYLOAD=`echo '{
   "SECRET": "'$SPINNAKER_SECRET'",
   "parameters": {
     "git_ref": "'$CIRCLE_SHA1'"
