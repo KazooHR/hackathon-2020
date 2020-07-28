@@ -8,5 +8,5 @@ $PAYLOAD=`echo '{
 
 curl -X POST \
   https://spinnaker-api.kazoohr.io/webhooks/webhook/hackathon-2020 \
-  -H 'content-type: application/json'
+  -H 'content-type: application/json' \
   -d "$PAYLOAD"
