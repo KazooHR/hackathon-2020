@@ -95,6 +95,10 @@ jobs:
       - image: alpine:latest
     steps:
       - run:
+          name: Install curl
+          command: apk add curl
+
+      - run:
           name: Tell spinnaker to deploy
           command: |
             curl \
