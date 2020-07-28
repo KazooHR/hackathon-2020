@@ -18,8 +18,7 @@ spec:
     spec:
       containers:
         - name: talentiq
-          # The parameter below is replaced during circle build
-          image: gcr.io/hmm-dev/talentiq:${parameters.tag}
+          image: gcr.io/hmm-dev/talentiq
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

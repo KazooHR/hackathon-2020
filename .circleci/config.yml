@@ -101,16 +101,7 @@ jobs:
       - run:
           name: Tell spinnaker to deploy
           command: |
-            curl \
-              --request POST \
-              --url https://spinnaker-api.kazoohr.io/webhooks/webhook/hackathon-2020 \
-              --header 'content-type: application/json' \
-              --data '{
-                  "SECRET": "${SPINNAKER_SECRET}",
-                  "parameters": {
-                    "git_ref": "${CIRCLE_SHA1}"
-                  }
-                }'
+            curl --request POST --url https://spinnaker-api.kazoohr.io/webhooks/webhook/hackathon-2020 --header 'content-type: application/json' --data "echo '{ "SECRET": "' $SPINNAKER_SECRET '", "parameters": { "git_ref": "'$CIRCLE_SHA1'" } }'"
 
 workflows:
   version: 2
