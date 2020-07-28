@@ -89,6 +89,20 @@ jobs:
               gcr.io/kazoo-infrastructure/${PROJECT_NAME}:${CIRCLE_SHA1} \
               gcr.io/kazoo-infrastructure/${PROJECT_NAME}:${CIRCLE_BRANCH}
 
+  deploy:
+    working_directory: ~/talentiq
+    docker:
+      - image: alpine:latest
+    steps:
+      - run:
+          name: Install curl
+          command: apk add curl
+
+      - run:
+          name: Tell spinnaker to deploy
+          command: |
+            curl --request POST --url https://spinnaker-api.kazoohr.io/webhooks/webhook/hackathon-2020 --header 'content-type: application/json' --data "echo '{ "SECRET": "' $SPINNAKER_SECRET '", "parameters": { "git_ref": "'$CIRCLE_SHA1'" } }'"
+
 workflows:
   version: 2
   talentiq:
@@ -98,3 +112,11 @@ workflows:
       - build-backend:
           requires:
             - build-frontend
+
+      - deploy:
+          requires:
+            - build-backend
+          filters:
+            branches:
+              only:
+                - master

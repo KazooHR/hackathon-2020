@@ -8,3 +8,4 @@ data:
   GCP_BIGQUERY_DATASET_ID: "talentiq"
   GCP_PROJECT_ID: "kazoo-production"
   GCP_REGION: "us-east4"
+  OKTA_CLIENT_ID: "0oa4wqluetAkekgqg357"
