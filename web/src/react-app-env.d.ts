@@ -6,3 +6,5 @@ interface Window extends Window {
     TENANT_ID: string;
   };
 }
+
+declare module "@okta/okta-react";
