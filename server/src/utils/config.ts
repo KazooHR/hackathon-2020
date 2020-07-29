@@ -3,6 +3,12 @@ import convict from "convict";
 // Let's try to keep this list alphabetized for readability
 /* eslint sort-keys: "error" */
 const configurationSchema = {
+  HOST: {
+    default: "http://localhost:8080",
+    doc: "The app base url for where this app is running",
+    env: "HOST",
+    format: String,
+  },
   GCP_PROJECT_ID: {
     default: "hmm-dev",
     doc: "GCP Project ID for where this will run",
@@ -33,6 +39,12 @@ const configurationSchema = {
     default: "no-sha-provided",
     doc: "Specifies the sha of the current version of the application",
     env: "SHA",
+    format: String,
+  },
+  OKTA_CLIENT_ID: {
+    default: "0oa4wqluetAkekgqg357",
+    doc: "Client ID for our Okta OIDC auth provider",
+    env: "OKTA_CLIENT_ID",
     format: String,
   },
 };

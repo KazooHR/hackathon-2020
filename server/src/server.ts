@@ -1,3 +1,4 @@
+import "./types";
 import http from "http";
 import express from "express";
 
@@ -8,8 +9,6 @@ import routes from "./routes";
 const PORT = 8080;
 
 const app = express();
-
-app.use(appLogger());
 
 server.applyMiddleware({ app });
 

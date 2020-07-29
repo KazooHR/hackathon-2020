@@ -19,7 +19,8 @@ const resolvers: Resolvers = {
     },
   }),
   Query: {
-    hello: () => "World!",
+    hello: (_parent, _args, context) =>
+      context.currentUser?.name || "Anonymous! Wait how did you get here!?!?",
     time: () => new Date(),
   },
 };
