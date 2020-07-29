@@ -8,6 +8,7 @@ import { getMainDefinition } from "apollo-utilities";
 import { setContext } from "apollo-link-context";
 
 import config from "../utils/config";
+import auth from "../utils/auth";
 
 const httpLink = new HttpLink({
   uri: config.IS_PROD ? "/graphql" : "http://localhost:8080/graphql",
@@ -15,13 +16,12 @@ const httpLink = new HttpLink({
 
 const authLink = setContext(async (_, { headers }) => {
   // get the authentication token from local storage if it exists
-  // TODO: Add auth here for GraphQL Queries and Mutations
-  // const token = await auth.currentUser?.getIdToken();
+  const { idToken } = auth.getAuthState();
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: "",
+      authorization: idToken ? `Bearer ${idToken}` : "",
     },
   };
 });
@@ -35,10 +35,9 @@ const wsLink = new WebSocketLink({
     reconnect: true,
     lazy: true,
     connectionParams: async () => {
-      // TODO: add auth here for GraphQL Subscriptions
-      // const token = await auth.currentUser?.getIdToken();
+      const { idToken } = auth.getAuthState();
       return {
-        authToken: "",
+        authToken: idToken,
       };
     },
   },

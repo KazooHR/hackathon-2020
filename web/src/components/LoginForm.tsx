@@ -1,66 +1,26 @@
 import React from "react";
-import { Fab, Grid, Paper, TextField, Typography } from "@material-ui/core";
+import { Fab, Paper, Typography } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
-const LoginForm: React.FC = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [error, setError] = React.useState<string>();
-  const [loading, setLoading] = React.useState(false);
+import { useOktaAuth } from "@okta/okta-react";
 
-  const login = async () => {
-    setLoading(true);
-    try {
-      // do some signin here
-      setLoading(false);
-    } catch (e) {
-      setError(JSON.stringify(e));
-    }
-  };
+const LoginForm: React.FC = () => {
+  const { authState, authService } = useOktaAuth();
+  const login = () => authService.login("/logged-in");
+
+  if (authState.isPending) {
+    return <div>Loading authentication...</div>;
+  }
 
   return (
     <Paper style={{ margin: 16, padding: 16 }}>
       <Typography variant="h4" gutterBottom>
         Login
       </Typography>
-      <form>
-        <Grid container>
-          <Grid xs={12} item>
-            <TextField
-              placeholder="Email"
-              autoComplete="username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              fullWidth
-            />
-          </Grid>
-          <Grid xs={10} md={11} item style={{ paddingRight: 16 }}>
-            <TextField
-              placeholder="Password"
-              value={password}
-              type="password"
-              autoComplete="current-password"
-              onChange={(e) => setPassword(e.target.value)}
-              fullWidth
-            />
-          </Grid>
-          <Grid xs={2} md={1} item>
-            <Fab
-              size="small"
-              color="primary"
-              onClick={login}
-              disabled={loading}
-            >
-              <ArrowForwardIcon />
-            </Fab>
-          </Grid>
-          {error && (
-            <Grid xs={12} item>
-              <Typography color="error">{error}</Typography>
-            </Grid>
-          )}
-        </Grid>
-      </form>
+
+      <Fab size="small" color="primary" onClick={login}>
+        <ArrowForwardIcon />
+      </Fab>
     </Paper>
   );
 };

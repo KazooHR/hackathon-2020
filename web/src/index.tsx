@@ -1,18 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
+import { Security } from "@okta/okta-react";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { AuthContextProvider } from "./contexts/AuthContext";
 import client from "./graphql/client";
+import auth from "./utils/auth";
+
+const oktaConfig = {
+  authService: auth
+};
 
 ReactDOM.render(
-  <ApolloProvider client={client as any}>
-    <AuthContextProvider>
+  <Security {...oktaConfig}>
+    <ApolloProvider client={client as any}>
       <App />
-    </AuthContextProvider>
-  </ApolloProvider>,
+    </ApolloProvider>
+  </Security>,
   document.getElementById("root")
 );
 

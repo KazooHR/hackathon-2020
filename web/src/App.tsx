@@ -1,32 +1,36 @@
 import React from "react";
-import { CircularProgress } from "@material-ui/core";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+
+import { LoginCallback, useOktaAuth, SecureRoute } from "@okta/okta-react";
 
 import Layout from "./components/Layout";
 import LoginForm from "./components/LoginForm";
-import { useAuth } from "./contexts/AuthContext";
+import LoggedInPage from "./components/LoggedInPage";
+
+const CALLBACK_PATH = "/authorization-code/callback";
 
 const App: React.FC = () => {
-  const { loggedIn, loading } = useAuth();
+  const { authState } = useOktaAuth();
+
   return (
     <Layout>
-      {loading ? (
-        <CircularProgress
-          size={64}
-          style={{ margin: "4rem auto", display: "block" }}
-        />
-      ) : (
-        <>
-          {loggedIn ? (
-            <>
-              <div>You're logged In</div>
-            </>
-          ) : (
-            <>
-              <LoginForm />
-            </>
-          )}
-        </>
-      )}
+      <Router>
+        <Switch>
+          <Route path={CALLBACK_PATH} component={LoginCallback} />
+          <SecureRoute path="/logged-in" exact component={LoggedInPage} />
+          <Route path="/login" component={LoginForm} />
+          <Redirect
+            from="/"
+            exact
+            to={`${authState.isAuthenticated ? "/logged-in" : "/login"}`}
+          />
+        </Switch>
+      </Router>
     </Layout>
   );
 };

@@ -14,8 +14,10 @@
   "dependencies": {
     "@google-cloud/bigquery": "^5.1.0",
     "@google-cloud/logging-winston": "^4.0.0",
+    "@okta/jwt-verifier": "^1.0.0",
     "apollo-server-express": "^2.16.0",
     "convict": "^6.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-winston": "^4.0.5",
     "mustache": "^4.0.1",
