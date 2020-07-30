@@ -11,7 +11,9 @@ const LoggedInPage: React.FC = () => {
     action: "You recently completed a goal with",
     subject: "Neha Patel",
     question: "How would you rate Neha's abilitity to",
-    value: "collaborate"
+    value: "collaborate",
+    snoozeCount: 0,
+    rating: 2.5
   };
   return (
       <>
