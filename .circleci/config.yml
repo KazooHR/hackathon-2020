@@ -12,6 +12,12 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies
+
+      - run: |
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > ~/.npmrc
+          echo "always-auth = true" >> ~/.npmrc
+          echo "--install.frozen-lockfile true" >> .yarnrc
+
       - run:
           name: Installing dependencies
           command: yarn
