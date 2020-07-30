@@ -7,7 +7,12 @@ import {PopUpFeedback} from "./PopUpFeedback/Feedback";
 
 const LoggedInPage: React.FC = () => {
   const { data } = useHelloWorldQuery();
-
+  const feedback = {
+    action: "You recently completed a goal with",
+    subject: "Neha Patel",
+    question: "How would you rate Neha's abilitity to",
+    value: "collaborate"
+  };
   return (
       <>
     <Paper style={{ margin: 16, padding: 16 }}>
@@ -20,7 +25,7 @@ const LoggedInPage: React.FC = () => {
         Welcome {data?.hello || "Friend"}!
       </Typography>
     </Paper>
-      <PopUpFeedback></PopUpFeedback>
+      <PopUpFeedback feedback={feedback}></PopUpFeedback>
      </>
   );
 };
