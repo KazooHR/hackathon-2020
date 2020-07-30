@@ -1,14 +1,15 @@
 scalar DateTime
 
-type SlackMessage {
-  type: String
-  channel: String
-  user: String
-  text: String
-  ts: String
-}
-
 type Query {
   hello: String
   time: DateTime
+}
+
+input RateSomeoneInput {
+  person: String!
+  score: Float!
+}
+
+type Mutation {
+  rateSomeone(input: RateSomeoneInput!): String
 }

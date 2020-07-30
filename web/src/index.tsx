@@ -1,3 +1,5 @@
+import "./styles.css";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
@@ -9,7 +11,7 @@ import client from "./graphql/client";
 import auth from "./utils/auth";
 
 const oktaConfig = {
-  authService: auth
+  authService: auth,
 };
 
 ReactDOM.render(
