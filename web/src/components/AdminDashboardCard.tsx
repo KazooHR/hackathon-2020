@@ -9,11 +9,13 @@ import {
 } from "@kazoohr/confetti";
 
 import AdminDashboardDataTable from './AdminDashboardDataTable';
+import AdminDashboardChart from './AdminDashboardChart';
 
 const AdminDashboardCard: React.FC = () => {
 
   return (
     <Card>
+      <AdminDashboardChart />
       <div>
         <Search
           onOpen={null}
