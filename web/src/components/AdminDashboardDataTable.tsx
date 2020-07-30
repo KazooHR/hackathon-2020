@@ -36,7 +36,7 @@ const AdminDashboardDataTable: React.FC = () => {
         },
         { 
           header: 'collaboration rating', 
-          renderCell: () => (CollaborationColumn)
+          renderCell: (data: any) => (CollaborationColumn(data))
         },
         {
           header: 'team player rating',
@@ -49,10 +49,38 @@ const AdminDashboardDataTable: React.FC = () => {
       ]}
       data={
         [
-          { url: avatarUrls[0], name: 'Akim Stewart' }, 
-          { url: avatarUrls[1], name: 'Cassidy Jones'}, 
-          { url: avatarUrls[1], name: 'Angela Lau'}, 
-          { url: avatarUrls[1], name: 'Gina Goodrich'}
+          { 
+            url: avatarUrls[0], 
+            name: 'Akim Stewart', 
+            collaboratingRating: '3.75',
+            trendUp: true,
+            teamPlayerRating: '4.5',
+            suggestedAction: 'schedule sync-up'
+          }, 
+          { 
+            url: avatarUrls[1], 
+            name: 'Cassidy Jones', 
+            collaboratingRating: '1',
+            trendUp: false,
+            teamPlayerRating: '2',
+            suggestedAction: 'special recognition'
+          }, 
+          { 
+            url: avatarUrls[1], 
+            name: 'Angela Lau', 
+            collaboratingRating: '3.75',
+            trendUp: true,
+            teamPlayerRating: '4.5',
+            suggestedAction: 'create behavior bonus'
+          }, 
+          { 
+            url: avatarUrls[1], 
+            name: 'Gina Goodrich', 
+            collaboratingRating: '3.75',
+            trendUp: true,
+            teamPlayerRating: '1.75',
+            suggestedAction: 'assign goal'      
+          }
         ]
       }
       dataKey={(id: any) => id}
