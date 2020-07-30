@@ -1,5 +1,6 @@
 import React from "react";
-import { CardMedia, Paper, Typography } from "@material-ui/core";
+import { Paper, Typography } from "@material-ui/core";
+import { Logo } from "@kazoohr/confetti";
 
 import { useHelloWorldQuery } from "../graphql/hooks";
 import {PopUpFeedback} from "./PopUpFeedback/Feedback";
@@ -11,10 +12,10 @@ const LoggedInPage: React.FC = () => {
       <>
     <Paper style={{ margin: 16, padding: 16 }}>
       <Typography align="center" variant="h1" color="secondary">
-        <CardMedia
-          style={{ height: 50, width: 'auto', margin: '0 auto' }}
-          component={'img'}
-          image={require('web/public/web_logo.png')}
+        <Logo
+          companyName="Kazoo"
+          imgUrl="https://www.kazoohr.com/wp-content/themes/kazoo2019/assets/dist/images/Kazoo_Logo_Primary_Green.png"
+          redirectTo="https://www.kazoohr.com/"
         />
         Welcome {data?.hello || "Friend"}!
       </Typography>
