@@ -12,6 +12,8 @@ ENV SHA=${SHA}
 
 RUN yarn
 
+COPY ./node_modules/@kazoohr ./node_modules
+
 RUN yarn build
 
 EXPOSE 8080
