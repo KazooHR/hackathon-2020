@@ -8,6 +8,7 @@ import {
 
 import { LoginCallback, useOktaAuth, SecureRoute } from "@okta/okta-react";
 
+import AdminDashboard from "./components/AdminDashboard";
 import Layout from "./components/Layout";
 import LoginForm from "./components/LoginForm";
 import LoggedInPage from "./components/LoggedInPage";
@@ -24,6 +25,7 @@ const App: React.FC = () => {
           <Route path={CALLBACK_PATH} component={LoginCallback} />
           <SecureRoute path="/logged-in" exact component={LoggedInPage} />
           <Route path="/login" component={LoginForm} />
+          <Route path="/admin" component={AdminDashboard} />
           <Redirect
             from="/"
             exact

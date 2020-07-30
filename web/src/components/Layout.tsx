@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Button, Text } from "@kazoohr/confetti";
 
 import {
   AppBar,
@@ -24,6 +25,20 @@ const Layout: React.FC = (props) => {
               <Typography variant="h5" color="inherit">
                 Talent IQ
               </Typography>
+              <Button
+                variant={"transparent"}
+                href={'/admin'}
+                className={''}
+                size="small"
+              >  
+                <Text
+                  className={''}
+                  size={"small"}
+                  data-testid="admin-link-text"
+                >
+                  {'admin'}
+                </Text>
+              </Button>
             </Toolbar>
           </CardMedia>
         </AppBar>
