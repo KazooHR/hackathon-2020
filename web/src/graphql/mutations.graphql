@@ -1,0 +1,3 @@
+mutation RateSomeone($input: RateSomeoneInput!) {
+  rateSomeone(input: $input)
+}
