@@ -23,6 +23,9 @@ type RealtimeFeedbackRequest {
 
   "The key for the value the person is being rated on"
   value: String!
+
+  "How many times you've snoozed this request"
+  snoozeCount: Int!
 }
 
 type Query {
