@@ -8,3 +8,8 @@ interface Window extends Window {
 }
 
 declare module "@okta/okta-react";
+
+declare module "*.scss" {
+  const content: { [className: string]: string };
+  export default content;
+}
