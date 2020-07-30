@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Button, Header, Text, Flex, Spacer, TextArea, Grid } from "@kazoohr/confetti";
+import { Card, Button, Header, Text, Flex, Spacer, TextArea, PageLayout, PageLayoutContent, FlexChild, Grid, GridItem } from "@kazoohr/confetti";
 import { Rating } from "@material-ui/lab";
 
 export interface PopUpFeedbackProps {
@@ -18,41 +18,60 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
     const [rating, setRating] = useState<number>(2.5);
 
     return (
-        <Card>
+        <PageLayoutContent>
             <Grid>
-                <Header level="3" size="small">{feedback.action}</Header>
-                <Header level="1" size="medium" thick>{feedback.subject}</Header>
-                <Text>{feedback.question}{" "}<b>{feedback.value}</b>{"?"}</Text>
-                <Flex>
-                    <Rating style={{fontSize: "64px", color: "#2A5CDB"}} name="half-rating" defaultValue={rating} precision={0.5} size="large"
-                            onChangeActive={(event: object, value: number) => setRating(value)} />
-                </Flex>
-                {!commentOpen &&
-                <Button onClick={() => setCommentOpen(true)}>
-                    Add a comment (optional)
-                </Button>}
-                {commentOpen && <TextArea
-                    error=""
-                    maxLength={-1}
-                    minRows={-1}
-                    onMention={null}
-                    optionalLabelText="(optional)"
-                    placeholder={`let ${feedback.subject} know why you chose this rating`}
-                    speechBubble={false}
-                    value={comment}
-                    onChange={(comment: string) => setComment(comment)}
-                />}
-                <Spacer size="medium" orientation="horizontal" />
-                <Text>{"Your feedback is shared with Neha anonymously."}</Text>
-                <Spacer size="medium" orientation="horizontal" />
-
-                <Button onClick={null}>
-                    Submit Feedback
-                </Button>
-                <Button onClick={null}>
-                    Remind me later
-                </Button>
-                </Grid>
-        </Card>
-            )
+                <Card style={{'text-align': "center"}}>
+                    <GridItem xl={24}>
+                        <Spacer size="medium" orientation="vertical" />
+                        <Header level="3" size="small">{feedback.action}</Header>
+                        <Spacer size="medium" orientation="vertical" />
+                        <Header level="1" size="medium" thick>{feedback.subject}</Header>
+                        <Spacer size="medium" orientation="vertical" />
+                    </GridItem>
+                    <GridItem xl={24}>
+                        <Text>{feedback.question}{" "}<b>{feedback.value}</b>{"?"}</Text>
+                        <Spacer size="large" orientation="vertical" />
+                    </GridItem>
+                    <GridItem xl={24}>
+                        <Rating style={{fontSize: "64px", color: "#2A5CDB"}} name="half-rating" defaultValue={rating} precision={0.5} size="large"
+                                onChangeActive={(event: object, value: number) => setRating(value)} />
+                        <Spacer size="large" orientation="vertical" />
+                    </GridItem>
+                    <GridItem xl={24}>
+                        {!commentOpen &&
+                        (<Button onClick={() => setCommentOpen(true)}>
+                            Add a comment (optional)
+                        </Button>)}
+                    </GridItem>
+                    <GridItem xl={24}>
+                        {commentOpen && (<TextArea
+                            error=""
+                            maxLength={-1}
+                            minRows={-1}
+                            onMention={null}
+                            optionalLabelText="(optional)"
+                            placeholder={`let ${feedback.subject} know why you chose this rating`}
+                            speechBubble={false}
+                            value={comment}
+                            onChange={(comment: string) => setComment(comment)}/>)}
+                        <Spacer size="large" orientation="vertical" />
+                    </GridItem>
+                    <GridItem xl={24}>
+                        <Text><i>{"Your feedback is shared with Neha anonymously."}</i></Text>
+                        <Spacer size="large" orientation="vertical" />
+                    </GridItem>
+                    <GridItem xl={24}>
+                        <Button onClick={null}>
+                            Submit Feedback
+                        </Button>
+                        <Spacer size="large" orientation="vertical" />
+                    </GridItem>
+                    <GridItem xl={24}>
+                        <Button onClick={null}>
+                            Remind me later
+                        </Button>
+                    </GridItem>
+                </Card>
+            </Grid>
+            </PageLayoutContent>)
 }
