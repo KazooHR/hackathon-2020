@@ -6,7 +6,7 @@ type RealtimeFeedbackRequest {
   "Person you are supposed to rate"
   subject: String!
 
-  "You were doing this action when we prompted you to give feedbac"
+  "You were doing this action when we prompted you to give feedback"
   action: String!
 
   "The full text of the question we want to ask to get a rating based off of"
@@ -25,6 +25,7 @@ type Query {
 input RateSomeoneInput {
   requestId: ID!
   rating: Float!
+  comment: String
 }
 
 type Mutation {
