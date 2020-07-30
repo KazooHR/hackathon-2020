@@ -9,6 +9,13 @@ import { logger } from "../utils/logger";
 
 const router = Router();
 
+// Serve Confetti stylesheet
+const stylesPath = require.resolve("@kazoohr/confetti/build/styles.css");
+const staticRoot = path.dirname(stylesPath);
+
+const confettiVersion = "16.5.2";
+router.use(`/static/${confettiVersion}/confetti`, express.static(staticRoot));
+
 const assetPath =
   config.get("NODE_ENV") === "production"
     ? path.join(__dirname, "../../assets")
