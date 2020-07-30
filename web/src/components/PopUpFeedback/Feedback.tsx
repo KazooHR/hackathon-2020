@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Button, Header, Text, IconButton, Flex, Spacer } from "@kazoohr/confetti";
+import { Card, Button, Header, Text, Flex, Spacer } from "@kazoohr/confetti";
+import { Rating } from "@material-ui/lab";
 
 export interface PopUpFeedbackProps {
      action: string;
@@ -21,51 +22,7 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
             <Header level="1" size="medium" thick>{feedback.subject}</Header>
             <Text>{feedback.question}{" "}<b>{feedback.value}</b>{"?"}</Text>
             <Flex>
-                <IconButton
-                    className=""
-                    icon="rating"
-                    iconSize={16}
-                    iconVariant="regular"
-                    onClick={null}
-                    size={16}
-                    system={false}
-                />
-                <IconButton
-                    className=""
-                    icon="rating"
-                    iconSize={16}
-                    iconVariant="regular"
-                    onClick={null}
-                    size={16}
-                    system={false}
-                />
-                <IconButton
-                    className=""
-                    icon="rating"
-                    iconSize={16}
-                    iconVariant="regular"
-                    onClick={null}
-                    size={16}
-                    system={false}
-                />
-                <IconButton
-                    className=""
-                    icon="rating"
-                    iconSize={16}
-                    iconVariant="regular"
-                    onClick={null}
-                    size={16}
-                    system={false}
-                />
-                <IconButton
-                    className=""
-                    icon="rating"
-                    iconSize={16}
-                    iconVariant="regular"
-                    onClick={null}
-                    size={16}
-                    system={false}
-                />
+                <Rating style={{fontSize: "64px", color: "#2A5CDB"}} name="half-rating" defaultValue={2.5} precision={0.5} size="large"/>
             </Flex>
             <Button onClick={null}>
                 Add a comment (optional)
