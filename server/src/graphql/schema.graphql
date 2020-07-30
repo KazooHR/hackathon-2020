@@ -1,15 +1,33 @@
 scalar DateTime
 
+type RealtimeFeedbackRequest {
+  id: ID!
+
+  "Person you are supposed to rate"
+  subject: String!
+
+  "You were doing this action when we prompted you to give feedbac"
+  action: String!
+
+  "The full text of the question we want to ask to get a rating based off of"
+  question: String!
+
+  "The key for the value the person is being rated on"
+  value: String!
+}
+
 type Query {
   hello: String
   time: DateTime
+  currentRequest: RealtimeFeedbackRequest
 }
 
 input RateSomeoneInput {
-  person: String!
-  score: Float!
+  requestId: ID!
+  rating: Float!
 }
 
 type Mutation {
   rateSomeone(input: RateSomeoneInput!): String
+  snoozeFeedback(requestId: ID!): String
 }
