@@ -1,10 +1,19 @@
 scalar DateTime
 
+type Person {
+  id: ID!
+  firstName: String
+  lastName: String
+  avatarUrl: String
+}
+
 type RealtimeFeedbackRequest {
   id: ID!
 
   "Person you are supposed to rate"
-  subject: String!
+  subjectId: ID!
+
+  subject: Person
 
   "You were doing this action when we prompted you to give feedbac"
   action: String!
