@@ -8,7 +8,7 @@ import routes from "./routes";
 const PORT = 8080;
 const app = express();
 
-app.use(appLogger);
+app.use(appLogger());
 
 server.applyMiddleware({ app });
 
