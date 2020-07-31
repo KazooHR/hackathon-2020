@@ -9,7 +9,10 @@ const AdminDashboardChart: React.FC = () => {
       noShadow
       style={{ margin: 0, padding: 0 }}
     >
-      <img src="./skills-driver.png" style={{ width: '100%', height: 'auto'}}/>
+      <img 
+        src="./skills-driver.png" style={{ width: '100%', height: 'auto'}}
+        alt=""
+      />
     </Card>
   );
 };
