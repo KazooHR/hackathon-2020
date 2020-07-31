@@ -168,7 +168,7 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
                 minRows={-1}
                 onMention={null}
                 optionalLabelText="(optional)"
-                placeholder={`let ${feedback.subject} know why you chose this rating`}
+                placeholder={`let ${feedback.subject.name} know why you chose this rating`}
                 speechBubble={false}
                 value={comment}
                 onChange={(comment: string) => setComment(comment)}
@@ -177,56 +177,35 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
             )}
             <Spacer size="small" orientation="vertical" />
           </GridItem>
-        </Grid>
-
-        <Spacer size="large" orientation="vertical" />
-      </GridItem>
-      <GridItem xl={24}>
-        {!commentOpen && (
-          <Button onClick={() => setCommentOpen(true)} variant="system">
-            Add a comment (optional)
-          </Button>
-        )}
-      </GridItem>
-      <GridItem xl={24}>
-        {commentOpen && (
-          <TextArea
-            error=""
-            maxLength={-1}
-            minRows={-1}
-            onMention={null}
-            optionalLabelText="(optional)"
-            placeholder={`let ${feedback.subject.name} know why you chose this rating`}
-            speechBubble={false}
-            value={comment}
-            onChange={(comment: string) => setComment(comment)}
-            active
-          />
-        )}
-        <Spacer size="small" orientation="vertical" />
-      </GridItem>
-      <GridItem xl={24}>
-        <Text>
-          <span style={{ color: "#666666" }}>
-            <i>{"Your feedback is shared with Neha anonymously."}</i>
-          </span>
-        </Text>
-        <Spacer size="large" orientation="vertical" />
-      </GridItem>
-      <GridItem xl={24}>
-        <Button onClick={() => rateSomeone()} variant="destructive">
-          Submit Feedback
-        </Button>
-        <Spacer size="medium" orientation="vertical" />
-      </GridItem>
-      <GridItem xl={24}>
-        <Button
-          onClick={() => snoozeFeedback()}
-          variant="system"
-        >
-          Remind me later
-        </Button>
-      </GridItem>
-    </Card>
+          <GridItem xl={24}>
+            <Text>
+              <span style={{ color: "#666666" }}>
+                <i>{"Your feedback is shared with Neha anonymously."}</i>
+              </span>
+            </Text>
+            <Spacer size="large" orientation="vertical" />
+          </GridItem>
+          <GridItem xl={24}>
+            <Button onClick={() => rateSomeone()} variant="destructive">
+              Submit Feedback
+            </Button>
+            <Spacer size="medium" orientation="vertical" />
+          </GridItem>
+          <GridItem xl={24}>
+            <Button
+              onClick={() => snoozeFeedback()}
+              variant="system"
+            >
+              Remind me later
+            </Button>
+          </GridItem>
+        </Card>
+      </PageLayoutContent>
+      <PageLayoutSidebar>
+        <Card>
+        <p>Lookie!</p>
+        </Card>
+      </PageLayoutSidebar>
+    </PageLayout>
   );
 }
