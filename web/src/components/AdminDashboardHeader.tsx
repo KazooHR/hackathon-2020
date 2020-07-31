@@ -3,7 +3,7 @@ import { Header, Text, Spacer, Tab, Tabs } from "@kazoohr/confetti";
 
 const AdminDashboardHeader: React.FC = () => {
   return (
-    <div style={{ width: '984px', zIndex: 100, marginTop: '100px'}}>
+    <div>
       <Header
         level="1"
         size="h1"
