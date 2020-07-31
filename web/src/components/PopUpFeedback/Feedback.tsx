@@ -18,18 +18,17 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
     const [rating, setRating] = useState<number>(2.5);
 
     return (
-        <PageLayoutContent>
-            <Grid>
-                <Card style={{'text-align': "center"}}>
+                <Card style={{'text-align': "center", width: "604px", borderRadius: "10px"}}>
                     <GridItem xl={24}>
                         <Spacer size="medium" orientation="vertical" />
-                        <Header level="3" size="small">{feedback.action}</Header>
+                        <Header level="3" size="h5">{feedback.action}</Header>
                         <Spacer size="medium" orientation="vertical" />
-                        <Header level="1" size="medium" thick>{feedback.subject}</Header>
+                        <Header level="1" size="h2">{feedback.subject}</Header>
                         <Spacer size="medium" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
-                        <Text>{feedback.question}{" "}<b>{feedback.value}</b>{"?"}</Text>
+                        <Header level="3"
+                              size="h3">{feedback.question}{" "}<b>{feedback.value}</b>{"?"}</Header>
                         <Spacer size="large" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
@@ -39,7 +38,7 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                     </GridItem>
                     <GridItem xl={24}>
                         {!commentOpen &&
-                        (<Button onClick={() => setCommentOpen(true)}>
+                        (<Button onClick={() => setCommentOpen(true)} variant="system">
                             Add a comment (optional)
                         </Button>)}
                     </GridItem>
@@ -54,24 +53,23 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                             speechBubble={false}
                             value={comment}
                             onChange={(comment: string) => setComment(comment)}/>)}
+                        <Spacer size="small" orientation="vertical" />
+                    </GridItem>
+                    <GridItem xl={24}>
+                        <Text style={{color: "#666666"}}><i>{"Your feedback is shared with Neha anonymously."}</i></Text>
                         <Spacer size="large" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
-                        <Text><i>{"Your feedback is shared with Neha anonymously."}</i></Text>
-                        <Spacer size="large" orientation="vertical" />
-                    </GridItem>
-                    <GridItem xl={24}>
-                        <Button onClick={null}>
+                        <Button onClick={null} variant="destructive">
                             Submit Feedback
                         </Button>
-                        <Spacer size="large" orientation="vertical" />
+                        <Spacer size="medium" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
-                        <Button onClick={null}>
+                        <Button onClick={null} variant="system">
                             Remind me later
                         </Button>
                     </GridItem>
                 </Card>
-            </Grid>
-            </PageLayoutContent>)
+)
 }
