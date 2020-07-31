@@ -78,11 +78,26 @@ export default class BigQueryTable<Row extends object = {}> {
     FROM ${this.dataset}.${this.tableName}
     WHERE 1=1
       ${Object.entries(conditions)
-        .map(([column, value]) => `AND ${column} = '${value}'`)
+        .map(([column, value]) => {
+          if (value instanceof Date) {
+            return `AND ${column} = '${value.toISOString()}'`;
+          }
+
+          switch (typeof value) {
+            case "boolean":
+              return `AND ${column} = ${value ? "TRUE" : "FALSE"}`;
+            case "number":
+            case "bigint":
+              return `AND ${column} = ${value}`;
+            case "undefined":
+              return "";
+            case "string":
+            default:
+              return `AND ${column} = '${value}'`;
+          }
+        })
         .join("        \n")}
   `;
-
-    logger.info("Making bigquery query", { query });
 
     const [results] = await client.query(query);
 

@@ -19,18 +19,6 @@ const resolvers: Resolvers = {
       return value.toISOString();
     },
   }),
-  RealtimeFeedbackRequest: {
-    subject: async (parent) => {
-      const users = await Users.get({ login_email: parent.subjectId });
-
-      if (!users || users.length === 0) {
-        throw new UserInputError("That user does not exist");
-      }
-
-      const user = users[0];
-      return userToPerson(user);
-    },
-  },
   Query: {
     whoami: async (_parent, _args, context) => {
       if (!context.currentUser) {
@@ -49,14 +37,22 @@ const resolvers: Resolvers = {
         throw new AuthenticationError("You aren't logged in");
       }
 
+      const users = await Users.get({
+        company_id: "52e9e22f549d52e7a1000001",
+        active: true,
+      });
+      const randomUserIndex = Math.round(Math.random() * users.length);
+      const user = users[randomUserIndex];
+
       return {
         id: "82c5ee4a-a18f-569a-9421-c26937a146be",
-        subjectId: "alex.maingot@kazoohr.com",
+        subjectId: user.login_email || "",
+        subject: userToPerson(user),
         action: "You recently completed a goal with",
         question: "What do you think about this person's",
         value: "communication",
         snoozeCount: 0,
-      } as any;
+      };
     },
   },
 };

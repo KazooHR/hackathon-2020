@@ -34,9 +34,32 @@ type RealtimeFeedbackRequest {
   snoozeCount: Int!
 }
 
+type FeedbackGiven {
+  id: ID!
+
+  "Person you are supposed to rate"
+  subjectId: ID!
+
+  subject: Person!
+
+  "You were doing this action when we prompted you to give feedback"
+  action: String!
+
+  "The full text of the question we want to ask to get a rating based off of"
+  question: String!
+
+  "The key for the value the person is being rated on"
+  value: String!
+
+  rating: Float!
+
+  comment: String
+}
+
 type Query {
   currentRequest: RealtimeFeedbackRequest!
   whoami: Person!
+  ratings: [FeedbackGiven!]!
 }
 
 input RateSomeoneInput {
