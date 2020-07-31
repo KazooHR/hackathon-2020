@@ -10,7 +10,8 @@ const AdminDashboardChart: React.FC = () => {
       style={{ margin: 0, padding: 0 }}
     >
       <img 
-        src="./skills-driver.png" style={{ width: '100%', height: 'auto'}}
+        src="./skills-driver.png" 
+        style={{ width: '100%', height: 'auto'}}
         alt=""
       />
     </Card>

@@ -5,7 +5,7 @@ import AdminDashboardHeader from "./AdminDashboardHeader";
 
 const AdminDashboard: React.FC = () => {
   return (
-    <PageLayout>
+    <PageLayout style={{ position: 'absolute', left: '320px'}}>
       <AdminDashboardHeader />
       <AdminDashboardCard />
     </PageLayout>
