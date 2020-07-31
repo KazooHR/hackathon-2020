@@ -1,3 +1,4 @@
+import NodeCache from "node-cache";
 import * as BigQuery from "@google-cloud/bigquery";
 
 import config from "../utils/config";
@@ -6,6 +7,8 @@ export const client = new BigQuery.BigQuery({
   credentials: JSON.parse(config.get("GCP_SERVICE_ACCOUNT_KEY")),
   projectId: config.get("GCP_PROJECT_ID"),
 });
+
+const cache = new NodeCache();
 
 interface BigQueryTableArgs {
   name: string;
@@ -53,7 +56,7 @@ export default class BigQueryTable<Row extends object = {}> {
     await table.insert(data);
   }
 
-  public async get(conditions: Partial<Row>) {
+  public async get(conditions: Partial<Row>, limit?: number) {
     const query = `
     SELECT *
     FROM ${this.dataset}.${this.tableName}
@@ -78,9 +81,15 @@ export default class BigQueryTable<Row extends object = {}> {
           }
         })
         .join("        \n")}
+    ${limit ? `LIMIT ${limit}` : ""}
   `;
 
+    const cachedResult = cache.get<Array<Row>>(query);
+    if (cachedResult) return cachedResult;
+
     const [results] = await client.query(query);
+
+    cache.set(query, results, 60 * 60 * 24);
 
     return results as Array<Row>;
   }
