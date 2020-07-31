@@ -16,8 +16,8 @@ import {
   Flex,
 } from "@kazoohr/confetti";
 import { Rating } from "@material-ui/lab";
-import { useToast } from "@kazoohr/confetti";
-import { useSnoozeFeedbackMutation } from "../../graphql/hooks";
+// import { useToast } from "@kazoohr/confetti";
+import { useRateSomeoneMutation, useSnoozeFeedbackMutation } from "../../graphql/hooks";
 
 export interface PopUpFeedbackProps {
   id: string;
@@ -41,16 +41,31 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
   const [commentOpen, setCommentOpen] = useState(false);
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState<number>(2.5);
-  const { error: showErrorToast, success: showSuccessToast } = useToast();
+  // const { error: showErrorToast, success: showSuccessToast } = useToast();
 
   const [snoozeFeedback] = useSnoozeFeedbackMutation({
     variables: { input: feedback.id },
     onCompleted: () => {
-      showSuccessToast(`We'll remind you to rate ${feedback.subject} later!`);
+      console.log(`We'll remind you to rate ${feedback.subject.name} later!`);
     },
     onError: () => {
-      showErrorToast("Error snoozing");
+      console.log("Error snoozing");
     },
+  });
+
+  const [rateSomeone] = useRateSomeoneMutation({
+    variables: {
+      input: {
+        requestId: feedback.id,
+        rating: rating,
+        comment: comment
+      }},
+    onCompleted: () => {
+      console.log(`Thanks for rating ${feedback.subject.name}!`);
+    },
+    onError: () => {
+      console.log("Error snoozing");
+    }
   });
 
   return (
@@ -162,37 +177,56 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
             )}
             <Spacer size="small" orientation="vertical" />
           </GridItem>
-          <GridItem xl={24}>
-            <Text>
-              <span style={{ color: "#666666" }}>
-                <i>{"Your feedback is shared with Neha anonymously."}</i>
-              </span>
-            </Text>
-            <Spacer size="large" orientation="vertical" />
-          </GridItem>
-          <GridItem xl={24}>
-            <Button onClick={null} variant="destructive">
-              Submit Feedback
-            </Button>
-            <Spacer size="medium" orientation="vertical" />
-          </GridItem>
-          <GridItem xl={24}>
-            <Button
-              onClick={() => {
-                snoozeFeedback();
-              }}
-              variant="system"
-            >
-              Remind me later
-            </Button>
-          </GridItem>
-        </Card>
-      </PageLayoutContent>
-      <PageLayoutSidebar>
-          <Card>
-            <p>This is the sidebar!</p>
-          </Card>
-      </PageLayoutSidebar>
-    </PageLayout>
+        </Grid>
+
+        <Spacer size="large" orientation="vertical" />
+      </GridItem>
+      <GridItem xl={24}>
+        {!commentOpen && (
+          <Button onClick={() => setCommentOpen(true)} variant="system">
+            Add a comment (optional)
+          </Button>
+        )}
+      </GridItem>
+      <GridItem xl={24}>
+        {commentOpen && (
+          <TextArea
+            error=""
+            maxLength={-1}
+            minRows={-1}
+            onMention={null}
+            optionalLabelText="(optional)"
+            placeholder={`let ${feedback.subject.name} know why you chose this rating`}
+            speechBubble={false}
+            value={comment}
+            onChange={(comment: string) => setComment(comment)}
+            active
+          />
+        )}
+        <Spacer size="small" orientation="vertical" />
+      </GridItem>
+      <GridItem xl={24}>
+        <Text>
+          <span style={{ color: "#666666" }}>
+            <i>{"Your feedback is shared with Neha anonymously."}</i>
+          </span>
+        </Text>
+        <Spacer size="large" orientation="vertical" />
+      </GridItem>
+      <GridItem xl={24}>
+        <Button onClick={() => rateSomeone()} variant="destructive">
+          Submit Feedback
+        </Button>
+        <Spacer size="medium" orientation="vertical" />
+      </GridItem>
+      <GridItem xl={24}>
+        <Button
+          onClick={() => snoozeFeedback()}
+          variant="system"
+        >
+          Remind me later
+        </Button>
+      </GridItem>
+    </Card>
   );
 }
