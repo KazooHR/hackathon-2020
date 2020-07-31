@@ -224,9 +224,9 @@ export function PopUpFeedback({ currentFeedback, isOpen , setIsOpen, refetch}: {
           altText=""
           announcements={[
             {
-              displayDate: 'Janary 13, 2050',
+              displayDate: 'Aug 1, 2020',
               id: '0',
-              message: 'Integer augue lorem, sagittis posuere sem vehicula, volutpat convallis magna. Nam vitae lorem nec tortor egestas egestas. Phasellus libero libero, ornare at auctor eu, malesuada non arcu. Integer ut faucibus est.'
+              message: 'Dont forget to have fun today. Try to get outside and enjoy summer, but remember to wear a mask!'
             }
           ]}
           logoUrl=""
@@ -239,9 +239,8 @@ export function PopUpFeedback({ currentFeedback, isOpen , setIsOpen, refetch}: {
           }}
         />
         <Card background="confetti">
-          <Header level="5" size="h5">Celebrations</Header>
-          <Divider style={{margin: '8px 0'}}/>
-          <div>
+          <Header level="5" size="h5" style={{display: 'inline'}}>Celebrations</Header>
+          <div style={{display: 'inline'}}>
             <Pill
               icon="anniversary"
               size="large"
@@ -255,6 +254,64 @@ export function PopUpFeedback({ currentFeedback, isOpen , setIsOpen, refetch}: {
               className="greenPill"
             />
           </div>
+          <Divider style={{margin: '8px 0'}}/>
+          <Facepile
+            size="MEDIUM"
+            tag=""
+            users={[
+              {
+                id: 'cde96356-fa50-4dd4-9a72-86b15483fb8a',
+                initials: 'ABC',
+                jobTitle: 'Human Factors Analyst',
+                name: 'Zola Rutherford',
+                primaryGroup: 'iterate'
+              },
+              {
+                id: '34f50cea-eb06-468f-be52-77badec4c8d3',
+                image160: 'https://s3.amazonaws.com/uifaces/faces/twitter/carlosblanco_eu/128.jpg',
+                image30: 'https://s3.amazonaws.com/uifaces/faces/twitter/dshster/128.jpg',
+                image70: 'https://s3.amazonaws.com/uifaces/faces/twitter/nerdgr8/128.jpg',
+                initials: 'ABC',
+                jobTitle: 'Direct Research Supervisor',
+                name: 'Kayli Hickle',
+                primaryGroup: 'disintermediate',
+                profileUrl: '#'
+              },
+              {
+                id: '4f15b10b-da31-4722-979a-7fb777bcb199',
+                image160: 'https://s3.amazonaws.com/uifaces/faces/twitter/borges_marcos/128.jpg',
+                image30: 'https://s3.amazonaws.com/uifaces/faces/twitter/randomlies/128.jpg',
+                image70: 'https://s3.amazonaws.com/uifaces/faces/twitter/daykiine/128.jpg',
+                initials: 'ABC',
+                jobTitle: 'Corporate Factors Agent',
+                name: 'Mr. Malcolm Kassulke',
+                primaryGroup: 'whiteboard',
+                profileUrl: '#'
+              },
+              {
+                id: '7d620971-d3e3-474c-80d5-f632574d3c63',
+                image160: 'https://s3.amazonaws.com/uifaces/faces/twitter/oskarlevinson/128.jpg',
+                image30: 'https://s3.amazonaws.com/uifaces/faces/twitter/shinze/128.jpg',
+                image70: 'https://s3.amazonaws.com/uifaces/faces/twitter/cherif_b/128.jpg',
+                initials: 'ABC',
+                jobTitle: 'Internal Identity Developer',
+                name: 'Waldo Mohr',
+                primaryGroup: 'enable',
+                profileUrl: '#'
+              },
+              {
+                id: '4410bf2d-5517-4ed3-a521-43574ebf17b5',
+                image160: 'https://s3.amazonaws.com/uifaces/faces/twitter/jcubic/128.jpg',
+                image30: 'https://s3.amazonaws.com/uifaces/faces/twitter/gusoto/128.jpg',
+                image70: 'https://s3.amazonaws.com/uifaces/faces/twitter/richardgarretts/128.jpg',
+                initials: 'ABC',
+                jobTitle: 'Customer Research Architect',
+                name: 'Mr. Murray Zieme',
+                primaryGroup: 'enable',
+                profileUrl: '#'
+              }
+            ]}
+          />
         </Card>
       </PageLayoutSidebar>
     </PageLayout>

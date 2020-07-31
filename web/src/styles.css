@@ -1455,5 +1455,7 @@ span.flatpickr-weekday {
 .greenPill{
   background-color: #227c31;
   color: white;
+  margin-left: 1em;
+  float: right;
 }
 /*# sourceMappingURL=styles.css.map*/
