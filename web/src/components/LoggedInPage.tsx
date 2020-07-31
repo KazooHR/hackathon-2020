@@ -1,6 +1,6 @@
 import React from "react";
-import { Paper, Typography } from "@material-ui/core";
-import { Logo } from "@kazoohr/confetti";
+import { Typography } from "@material-ui/core";
+import { Logo, Card, PageLayoutWide } from "@kazoohr/confetti";
 
 import { PopUpFeedback } from "./PopUpFeedback/Feedback";
 import { useCurrentRequestQuery, useWhoAmIQuery } from "../graphql/hooks";
@@ -12,16 +12,19 @@ const LoggedInPage: React.FC = () => {
 
   return (
     <>
-      <Paper style={{ margin: 16, padding: 16 }}>
-        <Typography align="center" variant="h1" color="secondary">
-          <Logo
-            companyName="Kazoo"
-            imgUrl="https://www.kazoohr.com/wp-content/themes/kazoo2019/assets/dist/images/Kazoo_Logo_Primary_Green.png"
-            redirectTo="https://www.kazoohr.com/"
-          />
-          Welcome {whoamiResult.data?.whoami.name || "pal"}!
-        </Typography>
-      </Paper>
+      <PageLayoutWide>
+        <Card>
+          <Typography align="center" variant="h2" color="secondary">
+            <Logo
+              companyName="Kazoo"
+              imgUrl="https://www.kazoohr.com/wp-content/themes/kazoo2019/assets/dist/images/Kazoo_Logo_Primary_Green.png"
+              redirectTo="https://www.kazoohr.com/"
+            />
+            <br/>
+            Welcome {whoamiResult.data?.whoami.name || "pal"}!
+          </Typography>
+        </Card>
+      </PageLayoutWide>
       {currentRequest && (
         <PopUpFeedback feedback={currentRequest}></PopUpFeedback>
       )}
