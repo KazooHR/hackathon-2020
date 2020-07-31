@@ -1,7 +1,6 @@
 import * as BigQuery from "@google-cloud/bigquery";
 
 import config from "../utils/config";
-import { logger } from "./logger";
 
 export const client = new BigQuery.BigQuery({
   credentials: JSON.parse(config.get("GCP_SERVICE_ACCOUNT_KEY")),
@@ -12,7 +11,6 @@ interface BigQueryTableArgs {
   name: string;
   schema: BigQuery.TableField[];
   dataset?: string;
-  getByIdQuery?: (id: string, dataset: string) => string;
 }
 
 export default class BigQueryTable<Row extends object = {}> {
@@ -20,12 +18,10 @@ export default class BigQueryTable<Row extends object = {}> {
   private readonly tableName: string;
   private readonly schema: BigQuery.TableField[];
   private readonly dataset: string;
-  private readonly getByIdQuery?: (id: string, dataset: string) => string;
 
   constructor(args: BigQueryTableArgs) {
     this.tableName = args.name;
     this.schema = args.schema;
-    this.getByIdQuery = args.getByIdQuery;
     this.dataset = args.dataset || config.get("GCP_BIGQUERY_DATASET_ID");
     this.table = this.initTable();
   }
@@ -55,21 +51,6 @@ export default class BigQueryTable<Row extends object = {}> {
     const table = await this.table;
 
     await table.insert(data);
-  }
-
-  public async getById(id: string) {
-    if (!this.getByIdQuery) {
-      throw new Error(`No getByIdQuery defined for table ${this.tableName}`);
-    }
-    const [results] = await client.query(this.getByIdQuery(id, this.dataset));
-
-    if (results.length === 1) {
-      return results[0] as Row;
-    } else if (results.length > 1) {
-      return results[results.length - 1] as Row;
-    } else {
-      return undefined;
-    }
   }
 
   public async get(conditions: Partial<Row>) {

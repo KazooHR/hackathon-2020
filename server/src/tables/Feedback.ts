@@ -23,8 +23,6 @@ const Feedback = new BigQueryTable<Feedback>({
     { name: "rating", type: "FLOAT64", mode: "REQUIRED" },
     { name: "comment", type: "STRING", mode: "NULLABLE" },
   ],
-  getByIdQuery: (id: string, dataset: string) =>
-    `SELECT * FROM ${dataset}.feedback WHERE id = '${id}';`,
 });
 
 export default Feedback;

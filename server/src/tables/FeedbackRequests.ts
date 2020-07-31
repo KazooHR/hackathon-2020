@@ -21,8 +21,6 @@ const FeedbackRequests = new BigQueryTable<FeedbackRequest>({
     { name: "userId", type: "STRING", mode: "REQUIRED" },
     { name: "requestedAt", type: "TIMESTAMP", mode: "REQUIRED" },
   ],
-  getByIdQuery: (id: string, dataset: string) =>
-    `SELECT * FROM ${dataset}.feedbackRequests WHERE id = '${id}';`,
 });
 
 export default FeedbackRequests;

@@ -221,8 +221,6 @@ const Users = new BigQueryTable<User>({
   // This table already exists so we do not specify the schema
   schema: [],
   dataset: "cdc_prod",
-  getByIdQuery: (id: string, dataset: string) =>
-    `SELECT * FROM ${dataset}.RR_users WHERE login_email = '${id}';`,
 });
 
 export const userToPerson = (user: User): Person => {
