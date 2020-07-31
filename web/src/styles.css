@@ -1432,6 +1432,16 @@ span.flatpickr-weekday {
 .emoji-mart-dark .emoji-mart-anchor-selected {
   color: #bfbfbf;
 }
-
-
+.menuButton {
+  color: white;
+  margin-right: 1rem;
+}
+.menuButton:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.adminButton {
+  background-color: white;
+  float: right !important;
+  margin-left: 2rem;
+}
 /*# sourceMappingURL=styles.css.map*/

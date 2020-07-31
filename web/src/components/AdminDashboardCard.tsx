@@ -6,7 +6,7 @@ import {
   Icon,
   Pagination,
   Pill,
-  Search, 
+  Search,
   Spacer,
   UtilityText
 } from "@kazoohr/confetti";
@@ -16,7 +16,7 @@ import AdminDashboardChart from "./AdminDashboardChart";
 
 const AdminDashboardCard: React.FC = () => {
   return (
-    <Card style={{ width: '984px'}}>
+    <Card>
       <Flex justifyContent="space-between">
         <Flex justifyContent="space-between">
           <div style={{ border: '1px solid #C6C6C6', height: '40px', width: '555px'}}>
@@ -101,7 +101,7 @@ const AdminDashboardCard: React.FC = () => {
       <Spacer orientation="vertical" size="default" />
       <AdminDashboardChart />
       <Spacer orientation="vertical" size="default" />
-      
+
       <AdminDashboardDataTable />
     </Card>
   );
