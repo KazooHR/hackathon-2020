@@ -6,8 +6,6 @@ metadata:
   namespace: talentiq-prod
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
   selector:
     matchLabels:
       app: talentiq
