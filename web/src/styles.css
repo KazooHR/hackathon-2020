@@ -1469,4 +1469,21 @@ body {
   margin-top: 32px;
   border-radius: 10px 10px 0 0;
 }
+
+.fudgeAlignPage {
+  margin-top: 0;
+  display: inline-flex;
+}
+
+.fudgeAlignCount {
+  display: inline-flex;
+  position: relative;
+}
+.employeeCount {
+  position: absolute;
+  top: -18px;
+  left: -84px;
+  width: 290px;
+}
+
 /*# sourceMappingURL=styles.css.map*/

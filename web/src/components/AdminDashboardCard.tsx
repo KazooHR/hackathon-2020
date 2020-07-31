@@ -37,15 +37,20 @@ const AdminDashboardCard: React.FC = () => {
             />
           </div>
         </Flex>
-        <UtilityText size='small'>
-          4 EMPLOYEES
-        </UtilityText>
         <FlexChild>
+          <div className="fudgeAlignCount">
+            <div className="employeeCount">
+              <UtilityText size='small'>
+                4 EMPLOYEES
+              </UtilityText>
+            </div>
+          </div>
           <Pagination
             current={1}
             id="test-pager"
             onPage={null}
             onQty={null}
+            className="fudgeAlignPage"
             qtyOptions={[
               {
                 label: "1",
@@ -57,6 +62,7 @@ const AdminDashboardCard: React.FC = () => {
           />
         </FlexChild>
       </Flex>
+      <Spacer orientation="horizontal" size="medium" />
       <Flex>
         <Pill
           avatarUser={null}
