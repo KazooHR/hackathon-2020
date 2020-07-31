@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import {
+  Announcements,
   PageLayout,
   PageLayoutContent,
   PageLayoutSidebar,
   Card,
   Button,
+  Divider,
   Header,
   Text,
   Spacer,
@@ -218,8 +220,41 @@ export function PopUpFeedback({ currentFeedback, isOpen , setIsOpen, refetch}: {
         }
       </PageLayoutContent>
       <PageLayoutSidebar>
-        <Card>
-        <p>Lookie!</p>
+        <Announcements
+          altText=""
+          announcements={[
+            {
+              displayDate: 'Janary 13, 2050',
+              id: '0',
+              message: 'Integer augue lorem, sagittis posuere sem vehicula, volutpat convallis magna. Nam vitae lorem nec tortor egestas egestas. Phasellus libero libero, ornare at auctor eu, malesuada non arcu. Integer ut faucibus est.'
+            }
+          ]}
+          logoUrl=""
+          onDismiss={null}
+          text={{
+            dismiss: 'Dismiss',
+            less: 'Show Less',
+            more: 'Show More',
+            title: 'Announcements'
+          }}
+        />
+        <Card background="confetti">
+          <Header level="5" size="h5">Celebrations</Header>
+          <Divider style={{margin: '8px 0'}}/>
+          <div>
+            <Pill
+              icon="anniversary"
+              size="large"
+              text="3"
+              className="greenPill"
+            />
+            <Pill
+              icon="birthday"
+              size="large"
+              text="2"
+              className="greenPill"
+            />
+          </div>
         </Card>
       </PageLayoutSidebar>
     </PageLayout>
