@@ -1458,4 +1458,9 @@ span.flatpickr-weekday {
   margin-left: 1em;
   float: right;
 }
+
+body {
+  background: url("~web/public/Rainbow Base 5.png") fixed no-repeat center top;
+  background-size: cover;
+}
 /*# sourceMappingURL=styles.css.map*/
