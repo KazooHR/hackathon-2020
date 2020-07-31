@@ -1,45 +1,45 @@
 import React from "react";
-import { 
-  Card, 
+import {
+  Card,
   Flex,
   FlexChild,
   Icon,
   Pagination,
   Pill,
-  Search, 
-  Spacer
+  Search,
+  Spacer,
 } from "@kazoohr/confetti";
 
-import AdminDashboardDataTable from './AdminDashboardDataTable';
-import AdminDashboardChart from './AdminDashboardChart';
+import AdminDashboardDataTable from "./AdminDashboardDataTable";
+import AdminDashboardChart from "./AdminDashboardChart";
 
 const AdminDashboardCard: React.FC = () => {
-
   return (
     <Card>
       <AdminDashboardChart />
       <Flex justifyContent="space-between">
         <FlexChild>
-          <div style={{ border: '1px solid grey', height: '40px', width: '555px'}}>
+          <div
+            style={{ border: "1px solid grey", height: "40px", width: "555px" }}
+          >
             <Search
               onOpen={null}
               onClose={null}
               open={true}
               buttonId={"search"}
             >
+              {}
             </Search>
-            <Icon 
+            <Icon
               className=""
               color=""
               icon="filter"
               size={24}
-              variant="regular" 
+              variant="regular"
             />
           </div>
         </FlexChild>
-        <FlexChild>
-          4 employees
-        </FlexChild>
+        <FlexChild>4 employees</FlexChild>
         <FlexChild>
           <Pagination
             current={1}
@@ -48,9 +48,9 @@ const AdminDashboardCard: React.FC = () => {
             onQty={null}
             qtyOptions={[
               {
-                label: '1',
-                value: '1'
-              }
+                label: "1",
+                value: "1",
+              },
             ]}
             selectedQty="1"
             total={1}
@@ -60,7 +60,7 @@ const AdminDashboardCard: React.FC = () => {
       <Flex>
         <Pill
           avatarUser={null}
-          icon={'caret_dn'}
+          icon={"caret_dn"}
           onClick={null}
           onClose={null}
           size="small"
@@ -69,7 +69,7 @@ const AdminDashboardCard: React.FC = () => {
         />
         <Pill
           avatarUser={null}
-          icon={'caret_dn'}
+          icon={"caret_dn"}
           onClick={null}
           onClose={null}
           size="small"
@@ -78,7 +78,7 @@ const AdminDashboardCard: React.FC = () => {
         />
         <Pill
           avatarUser={null}
-          icon={'caret_dn'}
+          icon={"caret_dn"}
           onClick={null}
           onClose={null}
           size="small"
@@ -87,7 +87,7 @@ const AdminDashboardCard: React.FC = () => {
         />
         <Pill
           avatarUser={null}
-          icon={'caret_dn'}
+          icon={"caret_dn"}
           onClick={null}
           onClose={null}
           size="small"
@@ -95,15 +95,10 @@ const AdminDashboardCard: React.FC = () => {
           variant="gray"
         />
       </Flex>
-      <Spacer
-        orientation="vertical"
-        outline
-        size="default"
-      />
+      <Spacer orientation="vertical" outline size="default" />
       <AdminDashboardDataTable />
     </Card>
   );
 };
-
 
 export default AdminDashboardCard;

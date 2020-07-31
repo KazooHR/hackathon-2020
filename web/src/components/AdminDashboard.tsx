@@ -1,10 +1,9 @@
 import React from "react";
-import { PageLayout } from '@kazoohr/confetti';
-import AdminDashboardCard from './AdminDashboardCard';
-import AdminDashboardHeader from './AdminDashboardHeader';
+import { PageLayout } from "@kazoohr/confetti";
+import AdminDashboardCard from "./AdminDashboardCard";
+import AdminDashboardHeader from "./AdminDashboardHeader";
 
 const AdminDashboard: React.FC = () => {
-
   return (
     <PageLayout>
       <AdminDashboardHeader />
@@ -14,4 +13,3 @@ const AdminDashboard: React.FC = () => {
 };
 
 export default AdminDashboard;
-

@@ -1,3 +1,7 @@
 mutation RateSomeone($input: RateSomeoneInput!) {
   rateSomeone(input: $input)
 }
+
+mutation SnoozeFeedback($input: ID!) {
+  snoozeFeedback(requestId: $input)
+}

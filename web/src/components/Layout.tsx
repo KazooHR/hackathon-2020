@@ -8,9 +8,9 @@ import {
   Toolbar,
   Typography,
   CssBaseline,
-  ThemeProvider
+  ThemeProvider,
 } from "@material-ui/core";
-import theme from './muiTheme';
+import theme from "./muiTheme";
 
 const Layout: React.FC = (props) => {
   const { children } = props;
@@ -20,23 +20,26 @@ const Layout: React.FC = (props) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <AppBar color="primary" position="static" style={{ height: 64 }}>
-          <CardMedia style={{ height: 64 }} image={require('web/public/bg-overlay.png')}>
+          <CardMedia
+            style={{ height: 64 }}
+            image={require("web/public/bg-overlay.png")}
+          >
             <Toolbar style={{ height: 64 }}>
               <Typography variant="h5" color="inherit">
                 Talent IQ
               </Typography>
               <Button
                 variant={"transparent"}
-                href={'/admin'}
-                className={''}
+                href={"/admin"}
+                className={""}
                 size="small"
-              >  
+              >
                 <Text
-                  className={''}
+                  className={""}
                   size={"small"}
                   data-testid="admin-link-text"
                 >
-                  {'admin'}
+                  {"admin"}
                 </Text>
               </Button>
             </Toolbar>
