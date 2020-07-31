@@ -45,7 +45,7 @@ const Layout: React.FC = (props) => {
             </Toolbar>
           </CardMedia>
         </AppBar>
-        <Container maxWidth="md">{children as any}</Container>
+        <Container maxWidth="lg">{children as any}</Container>
       </ThemeProvider>
     </>
   );

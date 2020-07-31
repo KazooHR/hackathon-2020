@@ -3,7 +3,7 @@ import { Header, Spacer, Tab, Tabs } from "@kazoohr/confetti";
 
 const AdminDashboardHeader: React.FC = () => {
   return (
-    <>
+    <div style={{ width: '984px'}}>
       <Header 
         level="1"
         size="h1"
@@ -45,7 +45,7 @@ const AdminDashboardHeader: React.FC = () => {
       </Tabs>
       <Spacer orientation="vertical" size="default" />
       
-    </>
+    </div>
   );
 };
 

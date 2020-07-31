@@ -28,10 +28,6 @@ export const EmployeeColumn = ({ url, name }: any) => {
       <GridItem width={16}>
         <Text size='small'>{`${name}`}</Text>
       </GridItem>
-      <Spacer
-        orientation="horizontal"
-        size="small"
-      />
     </Grid>
   );
 };
