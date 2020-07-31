@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Text, Button, IconButton, Icon } from "@kazoohr/confetti";
+import { Text, Button, IconButton } from "@kazoohr/confetti";
 
 import {
   AppBar,
-  CardMedia,
   Container,
   Toolbar,
   Typography,
