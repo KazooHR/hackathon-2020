@@ -1444,4 +1444,8 @@ span.flatpickr-weekday {
   float: right !important;
   margin-left: 2rem;
 }
+.syncUpModal * {
+  width: 348px !important;
+  padding: 0 !important;
+}
 /*# sourceMappingURL=styles.css.map*/
