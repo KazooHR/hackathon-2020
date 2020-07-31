@@ -1,4 +1,5 @@
 import React from "react";
+import { CardMedia } from "@material-ui/core";
 import { Card } from '@kazoohr/confetti';
 
 const AdminDashboardChart: React.FC = () => {
@@ -9,7 +10,10 @@ const AdminDashboardChart: React.FC = () => {
       withBorder
       noShadow
     >
-      <p>Cartesian Chart</p>
+      <CardMedia 
+        style={{ width: 700, height: 500 }} 
+        image={require('web/public/skills-driver.png')}
+      />
     </Card>
   );
 };

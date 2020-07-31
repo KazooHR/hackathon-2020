@@ -20,71 +20,80 @@ const AdminDashboardDataTable: React.FC = () => {
   ];
   
   return (
-    <DataTable
-      showCheckboxes
-      onToggleSelectOne={() => {}}
-      onToggleSelectAll={() => {}}
-      isSelectAllChecked={true}
-      selectedRowIds={[]}
-      showExpansionToggles
-      expandedRowIds={[]}
-      onToggleExpansionOne={() => {}}
-      columns={[
-        {
-          header: 'employee',
-          renderCell: (data: any) => (EmployeeColumn(data))
-        },
-        { 
-          header: 'collaboration rating', 
-          renderCell: (data: any) => (CollaborationColumn(data))
-        },
-        {
-          header: 'team player rating',
-          renderCell: () => (TeamPlayerColumn)
-        },
-        {
-          header: 'suggested action',
-          renderCell: () => (SuggestedActionColumn)
-        }
-      ]}
-      data={
-        [
+    <div style={{ boxShadow: 'none' }}>
+      <DataTable
+        showCheckboxes={false}
+        onToggleSelectOne={() => {}}
+        onToggleSelectAll={() => {}}
+        isSelectAllChecked={true}
+        selectedRowIds={[]}
+        showExpansionToggles={false}
+        expandedRowIds={[]}
+        onToggleExpansionOne={() => {}}
+        columns={[
+          {
+            header: 'employee',
+            renderCell: (data: any) => (EmployeeColumn(data))
+          },
           { 
-            url: avatarUrls[0], 
-            name: 'Akim Stewart', 
-            collaboratingRating: '3.75',
-            trendUp: true,
-            teamPlayerRating: '4.5',
-            suggestedAction: 'schedule sync-up'
-          }, 
-          { 
-            url: avatarUrls[1], 
-            name: 'Cassidy Jones', 
-            collaboratingRating: '1',
-            trendUp: false,
-            teamPlayerRating: '2',
-            suggestedAction: 'special recognition'
-          }, 
-          { 
-            url: avatarUrls[1], 
-            name: 'Angela Lau', 
-            collaboratingRating: '3.75',
-            trendUp: true,
-            teamPlayerRating: '4.5',
-            suggestedAction: 'create behavior bonus'
-          }, 
-          { 
-            url: avatarUrls[1], 
-            name: 'Gina Goodrich', 
-            collaboratingRating: '3.75',
-            trendUp: true,
-            teamPlayerRating: '1.75',
-            suggestedAction: 'assign goal'      
+            header: 'collaboration rating', 
+            renderCell: (data: any) => (CollaborationColumn(data)),
+            alignment: 'right'
+          },
+          {
+            header: 'team player rating',
+            renderCell: (data: any) => (TeamPlayerColumn(data)),
+            alignment: 'right'
+          },
+          {
+            header: 'suggested action',
+            renderCell: (data: any) => (SuggestedActionColumn(data)),
+            alignment: 'right'
           }
-        ]
-      }
-      dataKey={(id: any) => id}
-    />
+        ]}
+        data={
+          [
+            { 
+              url: avatarUrls[0], 
+              name: 'Akim Stewart', 
+              collaboratingRating: '3.75',
+              trendUp: true,
+              teamPlayerRating: '4.5',
+              teamPlayerTrendUp: true,
+              suggestedAction: 'schedule sync-up'
+            }, 
+            { 
+              url: avatarUrls[1], 
+              name: 'Cassidy Jones', 
+              collaboratingRating: '1',
+              trendUp: false,
+              teamPlayerRating: '2',
+              teamPlayerTrendUp: true,
+              suggestedAction: 'special recognition'
+            }, 
+            { 
+              url: avatarUrls[2], 
+              name: 'Angela Lau', 
+              collaboratingRating: '3.75',
+              trendUp: true,
+              teamPlayerRating: '4.5',
+              teamPlayerTrendUp: true,
+              suggestedAction: 'create behavior bonus'
+            }, 
+            { 
+              url: avatarUrls[3], 
+              name: 'Gina Goodrich', 
+              collaboratingRating: '3.75',
+              trendUp: true,
+              teamPlayerRating: '1.75',
+              teamPlayerTrendUp: false,
+              suggestedAction: 'assign goal'      
+            }
+          ]
+        }
+        dataKey={(id: any) => id}
+      />
+    </div>
   );
 };
 
