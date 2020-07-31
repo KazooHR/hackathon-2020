@@ -16,6 +16,12 @@ interface BigQueryTableArgs {
   dataset?: string;
 }
 
+interface QueryParams<Row extends object> {
+  queryParams: Partial<Row>;
+  limit?: number;
+  useCache?: boolean;
+}
+
 export default class BigQueryTable<Row extends object = {}> {
   private readonly table: Promise<BigQuery.Table>;
   private readonly tableName: string;
@@ -56,12 +62,14 @@ export default class BigQueryTable<Row extends object = {}> {
     await table.insert(data);
   }
 
-  public async get(conditions: Partial<Row>, limit?: number) {
+  public async get(params: QueryParams<Row>) {
+    const { queryParams, limit, useCache = true } = params;
+
     const query = `
     SELECT *
     FROM ${this.dataset}.${this.tableName}
     WHERE 1=1
-      ${Object.entries(conditions)
+      ${Object.entries(queryParams)
         .map(([column, value]) => {
           if (value instanceof Date) {
             return `AND ${column} = '${value.toISOString()}'`;
@@ -84,12 +92,12 @@ export default class BigQueryTable<Row extends object = {}> {
     ${limit ? `LIMIT ${limit}` : ""}
   `;
 
-    const cachedResult = cache.get<Array<Row>>(query);
+    const cachedResult = useCache ? cache.get<Array<Row>>(query) : undefined;
     if (cachedResult) return cachedResult;
 
     const [results] = await client.query(query);
 
-    cache.set(query, results, 60 * 60 * 24);
+    useCache && cache.set(query, results, 60 * 60 * 24);
 
     return results as Array<Row>;
   }

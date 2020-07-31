@@ -40,7 +40,7 @@ type FeedbackGiven {
   "Person you are supposed to rate"
   subjectId: ID!
 
-  subject: Person!
+  subject: Person
 
   "You were doing this action when we prompted you to give feedback"
   action: String!
