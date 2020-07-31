@@ -197,7 +197,7 @@ export function PopUpFeedback({ currentFeedback, isOpen , setIsOpen, refetch}: {
                 const newFeedback = await refetch();
                 setFeedback(newFeedback?.data.currentRequest);
                 setIsOpen(true);
-              }} variant="destructive">
+              }} variant="destructive" style={{ backgroundColor: "#fd5d4b" }}>
                 Submit Feedback
               </Button>
               <Spacer size="medium" orientation="vertical" />
