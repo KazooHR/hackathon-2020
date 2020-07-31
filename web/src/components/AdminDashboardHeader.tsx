@@ -7,19 +7,22 @@ const AdminDashboardHeader: React.FC = () => {
       <Header 
         level="1"
         size="h1"
+        style={{ fontSize: '32px', fontWeight: '300'}}
       >
       Talent IQ
-      </Header>  
+      </Header>
+      <Spacer orientation="vertical" size="default" />
       <Header 
-        level="3"
-        size="h3"
+        level="4"
+        size="h4"
       >
       Compare feedback ratings with key drivers to keep your employees engaged and growing.
-      </Header>      
+      </Header>
+      <Spacer orientation="vertical" size="default" />
       <Tabs
         onChange={null}
         responsiveDropdown={false}
-        value="all employees"
+        value="engagement indicators"
       >
         <Tab
           active={false}
