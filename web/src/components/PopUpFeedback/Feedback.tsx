@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Button, Header, Text, Flex, Spacer, TextArea, PageLayout, PageLayoutContent, FlexChild, Grid, GridItem } from "@kazoohr/confetti";
+import { Card, Button, Header, Text, Flex, Spacer, TextArea, PageLayout, PageLayoutContent, FlexChild, Grid, GridItem, Pill } from "@kazoohr/confetti";
 import { Rating } from "@material-ui/lab";
 
 export interface PopUpFeedbackProps {
@@ -34,6 +34,43 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                     <GridItem xl={24}>
                         <Rating style={{fontSize: "64px", color: "#2A5CDB"}} name="half-rating" defaultValue={rating} precision={0.5} size="large"
                                 onChangeActive={(event: object, value: number) => setRating(value)} />
+                        <Grid>
+                        <Spacer size="large" orientation="horizontal" />
+                        <Spacer size="small" orientation="horizontal" />
+                        <GridItem width={6}>
+                                <Pill
+                                    avatarUser={null}
+                                    icon={undefined}
+                                    onClick={null}
+                                    onClose={null}
+                                    size="small"
+                                    text="could use work"
+                                    variant="primary"/>
+                            </GridItem>
+                        <Spacer size="large" orientation="horizontal" />
+                        <GridItem width={6}>
+                                <Pill
+                                    avatarUser={null}
+                                    icon={undefined}
+                                    onClick={null}
+                                    onClose={null}
+                                    size="small"
+                                    text="part of our success"
+                                    variant="primary"/>
+                            </GridItem>
+                            <Spacer size="large" orientation="horizontal" />
+                            <GridItem width={6}>
+                            <Pill
+                                avatarUser={null}
+                                icon={undefined}
+                                onClick={null}
+                                onClose={null}
+                                size="small"
+                                text="key to our success"
+                                variant="primary"/>
+                            </GridItem>
+                            </Grid>
+
                         <Spacer size="large" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
@@ -52,11 +89,14 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                             placeholder={`let ${feedback.subject} know why you chose this rating`}
                             speechBubble={false}
                             value={comment}
-                            onChange={(comment: string) => setComment(comment)}/>)}
+                            onChange={(comment: string) => setComment(comment)}
+                            active
+                            />
+                            )}
                         <Spacer size="small" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
-                        <Text style={{color: "#666666"}}><i>{"Your feedback is shared with Neha anonymously."}</i></Text>
+                        <Text><span style={{color: "#666666"}}><i>{"Your feedback is shared with Neha anonymously."}</i></span></Text>
                         <Spacer size="large" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
