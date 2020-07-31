@@ -7,6 +7,7 @@ const AdminDashboardHeader: React.FC = () => {
       <Header
         level="1"
         size="h1"
+        style={{ fontSize: '32px', fontWeight: '300'}}
       >
       Talent IQ
       </Header>
@@ -18,7 +19,7 @@ const AdminDashboardHeader: React.FC = () => {
       <Tabs
         onChange={null}
         responsiveDropdown={false}
-        value="all employees"
+        value="engagement indicators"
       >
         <Tab
           active={false}
