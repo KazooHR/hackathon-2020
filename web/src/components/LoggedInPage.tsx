@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import { Typography } from "@material-ui/core";
 import { Logo, Card, PageLayoutWide } from "@kazoohr/confetti";
 
-import { PopUpFeedback } from "./PopUpFeedback/Feedback";
+import {PopUpFeedback, PopUpFeedbackProps} from "./PopUpFeedback/Feedback";
 import { useCurrentRequestQuery, useWhoAmIQuery } from "../graphql/hooks";
 
 const LoggedInPage: React.FC = () => {
   const whoamiResult = useWhoAmIQuery();
-  const { data } = useCurrentRequestQuery();
+  const [isOpen, setIsOpen] = useState(true);
+  const { data, refetch } = useCurrentRequestQuery();
   const { currentRequest } = data || {};
 
   return (
@@ -25,8 +26,8 @@ const LoggedInPage: React.FC = () => {
           </Typography>
         </Card>
       </PageLayoutWide>
-      {currentRequest && (
-        <PopUpFeedback feedback={currentRequest}></PopUpFeedback>
+      { currentRequest && (
+        <PopUpFeedback currentFeedback={currentRequest} isOpen={isOpen} setIsOpen={setIsOpen} refetch={refetch}></PopUpFeedback>
       )}
     </>
   );
