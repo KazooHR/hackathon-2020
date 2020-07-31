@@ -13,8 +13,8 @@ import {
   Flex,
 } from "@kazoohr/confetti";
 import { Rating } from "@material-ui/lab";
-import { useToast } from "@kazoohr/confetti";
-import { useSnoozeFeedbackMutation } from "../../graphql/hooks";
+// import { useToast } from "@kazoohr/confetti";
+import { useRateSomeoneMutation, useSnoozeFeedbackMutation } from "../../graphql/hooks";
 
 export interface PopUpFeedbackProps {
   id: string;
@@ -38,16 +38,31 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
   const [commentOpen, setCommentOpen] = useState(false);
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState<number>(2.5);
-  const { error: showErrorToast, success: showSuccessToast } = useToast();
+  // const { error: showErrorToast, success: showSuccessToast } = useToast();
 
   const [snoozeFeedback] = useSnoozeFeedbackMutation({
     variables: { input: feedback.id },
     onCompleted: () => {
-      showSuccessToast(`We'll remind you to rate ${feedback.subject} later!`);
+      console.log(`We'll remind you to rate ${feedback.subject.name} later!`);
     },
     onError: () => {
-      showErrorToast("Error snoozing");
+      console.log("Error snoozing");
     },
+  });
+
+  const [rateSomeone] = useRateSomeoneMutation({
+    variables: {
+      input: {
+        requestId: feedback.id,
+        rating: rating,
+        comment: comment
+      }},
+    onCompleted: () => {
+      console.log(`Thanks for rating ${feedback.subject.name}!`);
+    },
+    onError: () => {
+      console.log("Error snoozing");
+    }
   });
 
   return (
@@ -148,7 +163,7 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
             minRows={-1}
             onMention={null}
             optionalLabelText="(optional)"
-            placeholder={`let ${feedback.subject} know why you chose this rating`}
+            placeholder={`let ${feedback.subject.name} know why you chose this rating`}
             speechBubble={false}
             value={comment}
             onChange={(comment: string) => setComment(comment)}
@@ -166,16 +181,14 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
         <Spacer size="large" orientation="vertical" />
       </GridItem>
       <GridItem xl={24}>
-        <Button onClick={null} variant="destructive">
+        <Button onClick={() => rateSomeone()} variant="destructive">
           Submit Feedback
         </Button>
         <Spacer size="medium" orientation="vertical" />
       </GridItem>
       <GridItem xl={24}>
         <Button
-          onClick={() => {
-            snoozeFeedback();
-          }}
+          onClick={() => snoozeFeedback()}
           variant="system"
         >
           Remind me later
