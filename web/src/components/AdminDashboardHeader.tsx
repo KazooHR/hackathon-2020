@@ -1,21 +1,20 @@
 import React from "react";
-import { Header, Spacer, Tab, Tabs } from "@kazoohr/confetti";
+import { Header, Text, Spacer, Tab, Tabs } from "@kazoohr/confetti";
 
 const AdminDashboardHeader: React.FC = () => {
   return (
     <div style={{ width: '984px'}}>
-      <Header 
+      <Header
         level="1"
         size="h1"
       >
       Talent IQ
-      </Header>  
-      <Header 
-        level="3"
-        size="h3"
-      >
+      </Header>
+      <Spacer orientation="vertical" size="default"/>
+      <Text>
       Compare feedback ratings with key drivers to keep your employees engaged and growing.
-      </Header>      
+      </Text>
+      <Spacer orientation="vertical" size="medium"/>
       <Tabs
         onChange={null}
         responsiveDropdown={false}
@@ -44,7 +43,7 @@ const AdminDashboardHeader: React.FC = () => {
         </Tab>
       </Tabs>
       <Spacer orientation="vertical" size="default" />
-      
+
     </div>
   );
 };

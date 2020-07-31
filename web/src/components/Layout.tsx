@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Text } from "@kazoohr/confetti";
+import { Text, Button, IconButton, Icon } from "@kazoohr/confetti";
 
 import {
   AppBar,
@@ -8,7 +8,7 @@ import {
   Toolbar,
   Typography,
   CssBaseline,
-  ThemeProvider,
+  ThemeProvider
 } from "@material-ui/core";
 import theme from "./muiTheme";
 
@@ -20,19 +20,20 @@ const Layout: React.FC = (props) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <AppBar color="primary" position="static" style={{ height: 64 }}>
-          <CardMedia
-            style={{ height: 64 }}
-            image={require("web/public/bg-overlay.png")}
-          >
-            <Toolbar style={{ height: 64 }}>
+          <Toolbar style={{ height: 64 }}>
+              <IconButton
+                icon="hamburger"
+                iconSize={24}
+                className={"menuButton"}
+              />
               <Typography variant="h5" color="inherit">
-                Talent IQ
+                Talent IQ Demo
               </Typography>
               <Button
-                variant={"transparent"}
+                variant={"feature_inverted"}
                 href={"/admin"}
-                className={""}
-                size="small"
+                className={"adminButton"}
+                size="large"
               >
                 <Text
                   className={""}
@@ -43,9 +44,8 @@ const Layout: React.FC = (props) => {
                 </Text>
               </Button>
             </Toolbar>
-          </CardMedia>
         </AppBar>
-        <Container maxWidth="lg">{children as any}</Container>
+        <Container maxWidth="lg" className={""}>{children as any}</Container>
       </ThemeProvider>
     </>
   );
