@@ -19,78 +19,79 @@ const AdminDashboardDataTable: React.FC = () => {
   ];
 
   return (
-    <div style={{ boxShadow: "none" }}>
-      <DataTable
-        showCheckboxes={false}
-        onToggleSelectOne={() => {}}
-        onToggleSelectAll={() => {}}
-        isSelectAllChecked={true}
-        selectedRowIds={[]}
-        showExpansionToggles={false}
-        expandedRowIds={[]}
-        onToggleExpansionOne={() => {}}
-        columns={[
-          {
-            header: "employee",
-            renderCell: (data: any) => EmployeeColumn(data),
-          },
-          {
-            header: "collaboration rating",
-            renderCell: (data: any) => CollaborationColumn(data),
-            alignment: "right",
-          },
-          {
-            header: "team player rating",
-            renderCell: (data: any) => TeamPlayerColumn(data),
-            alignment: "right",
-          },
-          {
-            header: "suggested action",
-            renderCell: (data: any) => SuggestedActionColumn(data),
-            alignment: "right",
-          },
-        ]}
-        data={[
-          {
-            url: avatarUrls[0],
-            name: "Akim Stewart",
-            collaboratingRating: "3.75",
+    <DataTable
+      withoutShadows
+      showCheckboxes={false}
+      onToggleSelectOne={() => {}}
+      onToggleSelectAll={() => {}}
+      isSelectAllChecked={true}
+      selectedRowIds={[]}
+      showExpansionToggles={false}
+      expandedRowIds={[]}
+      onToggleExpansionOne={() => {}}
+      columns={[
+        {
+          header: "employee",
+          renderCell: (data: any) => EmployeeColumn(data),
+        },
+        {
+          header: "collaboration rating",
+          renderCell: (data: any) => CollaborationColumn(data),
+          alignment: "right",
+        },
+        {
+          header: "team player rating",
+          renderCell: (data: any) => TeamPlayerColumn(data),
+          alignment: "right",
+        },
+        {
+          header: "suggested action",
+          renderCell: (data: any) => SuggestedActionColumn(data),
+          alignment: "right",
+        },
+      ]}
+      data={
+        [
+          { 
+            url: avatarUrls[0], 
+            name: 'Akim Stewart', 
+            collaboratingRating: '3.75',
             trendUp: true,
-            teamPlayerRating: "4.5",
+            teamPlayerRating: '4.5',
             teamPlayerTrendUp: true,
-            suggestedAction: "schedule sync-up",
-          },
-          {
-            url: avatarUrls[1],
-            name: "Cassidy Jones",
-            collaboratingRating: "1",
+            suggestedAction: 'Schedule Sync-Up'
+          }, 
+          { 
+            url: avatarUrls[1], 
+            name: 'Cassidy Jones', 
+            collaboratingRating: '1',
             trendUp: false,
-            teamPlayerRating: "2",
+            teamPlayerRating: '2',
             teamPlayerTrendUp: true,
-            suggestedAction: "special recognition",
-          },
-          {
-            url: avatarUrls[2],
-            name: "Angela Lau",
-            collaboratingRating: "3.75",
+            suggestedAction: 'Special Recognition'
+          }, 
+          { 
+            url: avatarUrls[2], 
+            name: 'Angela Lau', 
+            collaboratingRating: '3.75',
             trendUp: true,
-            teamPlayerRating: "4.5",
+            teamPlayerRating: '4.5',
             teamPlayerTrendUp: true,
-            suggestedAction: "create behavior bonus",
-          },
-          {
-            url: avatarUrls[3],
-            name: "Gina Goodrich",
-            collaboratingRating: "3.75",
+            suggestedAction: 'Create Behavior Bonus'
+          }, 
+          { 
+            url: avatarUrls[3], 
+            name: 'Gina Goodrich', 
+            collaboratingRating: '3.75',
             trendUp: true,
-            teamPlayerRating: "1.75",
+            teamPlayerRating: '1.75',
             teamPlayerTrendUp: false,
-            suggestedAction: "assign goal",
-          },
-        ]}
-        dataKey={(id: any) => id}
-      />
-    </div>
+            suggestedAction: 'Assign Goal'      
+          }
+        ]
+      }
+      dataKey={(id: any) => id}
+    />
   );
 };
 
