@@ -79,7 +79,7 @@ export const SuggestedActionColumn = ({ suggestedAction }: any, setModalOpen: an
           fontSize: '12px'
         }
       }
-      onClick={() => setModalOpen(true)}
+      onClick={() => (suggestedAction === 'Schedule Sync-Up' && setModalOpen(true))}
     >
       {`${suggestedAction}`}
     </Button>
