@@ -8,6 +8,7 @@ import {PopUpFeedback} from "./PopUpFeedback/Feedback";
 const LoggedInPage: React.FC = () => {
   const { data } = useHelloWorldQuery();
   const feedback = {
+    id: "123",
     action: "You recently completed a goal with",
     subject: "Neha Patel",
     question: "How would you rate Neha's abilitity to",

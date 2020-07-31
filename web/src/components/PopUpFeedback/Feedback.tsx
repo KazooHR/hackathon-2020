@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { Card, Button, Header, Text, Flex, Spacer, TextArea, PageLayout, PageLayoutContent, FlexChild, Grid, GridItem, Pill } from "@kazoohr/confetti";
+import { Card, Button, Header, Text, Spacer, TextArea, Grid, GridItem, Pill, Facepile, Flex } from "@kazoohr/confetti";
 import { Rating } from "@material-ui/lab";
+import { useMutation } from "@apollo/react-hooks";
+import { SNOOZE_FEEDBACK } from "./helpers";
+import { useToast } from "@kazoohr/confetti";
+
 
 export interface PopUpFeedbackProps {
+    id: string;
     action: string;
     subject: string;
     question: string;
@@ -11,11 +16,33 @@ export interface PopUpFeedbackProps {
     rating: number;
     snoozeCount: number;
 }
-
 export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
     const [commentOpen, setCommentOpen] = useState(false);
     const [comment, setComment] = useState("");
     const [rating, setRating] = useState<number>(2.5);
+    const { error: showErrorToast, success: showSuccessToast } = useToast();
+
+
+    const users = [{
+        id: '5c8b4daf-12b1-4448-b975-dec084ed2888',
+        image: 'https://s3.amazonaws.com/uifaces/faces/twitter/shinze/128.jpg',
+        image160: 'https://s3.amazonaws.com/uifaces/faces/twitter/lisovsky/128.jpg',
+        image30: 'https://s3.amazonaws.com/uifaces/faces/twitter/salvafc/128.jpg',
+        image70: 'https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/128.jpg',
+        initials: 'ABC',
+        jobTitle: 'Regional Response Engineer',
+        name: 'Webster Kling',
+        primaryGroup: 'target',
+        profileUrl: '#'
+    }];
+    const [snoozeFeedback] = useMutation(SNOOZE_FEEDBACK, {
+        onCompleted: () => {
+            showSuccessToast(`We'll remind you to rate ${feedback.subject} later!`);
+        },
+        onError: () => {
+            showErrorToast("Error snoozing");
+        }
+    });
 
     return (
                 <Card style={{'text-align': "center", width: "604px", borderRadius: "10px"}}>
@@ -23,7 +50,13 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                         <Spacer size="medium" orientation="vertical" />
                         <Header level="3" size="h5">{feedback.action}</Header>
                         <Spacer size="medium" orientation="vertical" />
-                        <Header level="1" size="h2">{feedback.subject}</Header>
+                        <Flex justifyContent="space-around">
+                            <Flex>
+                                <Facepile users={users}  max={1} />
+                                <Spacer size="small" orientation="horizontal" />
+                                <Header level="1" size="h2">{feedback.subject}</Header>
+                             </Flex>
+                        </Flex>
                         <Spacer size="medium" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
@@ -38,6 +71,7 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                         <Spacer size="large" orientation="horizontal" />
                         <Spacer size="small" orientation="horizontal" />
                         <GridItem width={6}>
+                            <span style={{color: "#666666"}}>
                                 <Pill
                                     avatarUser={null}
                                     icon={undefined}
@@ -45,10 +79,13 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                                     onClose={null}
                                     size="small"
                                     text="could use work"
-                                    variant="primary"/>
+                                    variant="primary"
+                                />
+                            </span>
                             </GridItem>
                         <Spacer size="large" orientation="horizontal" />
                         <GridItem width={6}>
+                          <span style={{color: "#666666"}}>
                                 <Pill
                                     avatarUser={null}
                                     icon={undefined}
@@ -57,9 +94,12 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                                     size="small"
                                     text="part of our success"
                                     variant="primary"/>
+                          </span>
                             </GridItem>
                             <Spacer size="large" orientation="horizontal" />
                             <GridItem width={6}>
+                            <span style={{color: "#666666"}}>
+
                             <Pill
                                 avatarUser={null}
                                 icon={undefined}
@@ -68,6 +108,7 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                                 size="small"
                                 text="key to our success"
                                 variant="primary"/>
+                            </span>
                             </GridItem>
                             </Grid>
 
@@ -106,10 +147,11 @@ export function PopUpFeedback({feedback}: {feedback: PopUpFeedbackProps}) {
                         <Spacer size="medium" orientation="vertical" />
                     </GridItem>
                     <GridItem xl={24}>
-                        <Button onClick={null} variant="system">
+                        <Button onClick={() => {
+                            // snoozeFeedback(feedback.id)
+                        }} variant="system">
                             Remind me later
                         </Button>
                     </GridItem>
-                </Card>
-)
+                </Card>)
 }
