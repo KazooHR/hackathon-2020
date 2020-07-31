@@ -6,8 +6,9 @@ import {
   Icon,
   Pagination,
   Pill,
-  Search,
+  Search, 
   Spacer,
+  UtilityText
 } from "@kazoohr/confetti";
 
 import AdminDashboardDataTable from "./AdminDashboardDataTable";
@@ -15,17 +16,14 @@ import AdminDashboardChart from "./AdminDashboardChart";
 
 const AdminDashboardCard: React.FC = () => {
   return (
-    <Card>
-      <AdminDashboardChart />
+    <Card style={{ width: '984px'}}>
       <Flex justifyContent="space-between">
-        <FlexChild>
-          <div
-            style={{ border: "1px solid grey", height: "40px", width: "555px" }}
-          >
+        <Flex justifyContent="space-between">
+          <div style={{ border: '1px solid #C6C6C6', height: '40px', width: '555px'}}>
             <Search
               onOpen={null}
               onClose={null}
-              open={true}
+              open={false}
               buttonId={"search"}
             >
               {}
@@ -38,8 +36,10 @@ const AdminDashboardCard: React.FC = () => {
               variant="regular"
             />
           </div>
-        </FlexChild>
-        <FlexChild>4 employees</FlexChild>
+        </Flex>
+        <UtilityText size='small'>
+          4 EMPLOYEES
+        </UtilityText>
         <FlexChild>
           <Pagination
             current={1}
@@ -67,6 +67,7 @@ const AdminDashboardCard: React.FC = () => {
           text="1 reports up to"
           variant="gray"
         />
+        <Spacer orientation="horizontal" size="small" />
         <Pill
           avatarUser={null}
           icon={"caret_dn"}
@@ -76,6 +77,7 @@ const AdminDashboardCard: React.FC = () => {
           text="any group"
           variant="gray"
         />
+        <Spacer orientation="horizontal" size="small" />
         <Pill
           avatarUser={null}
           icon={"caret_dn"}
@@ -85,6 +87,7 @@ const AdminDashboardCard: React.FC = () => {
           text="any department"
           variant="gray"
         />
+        <Spacer orientation="horizontal" size="small" />
         <Pill
           avatarUser={null}
           icon={"caret_dn"}
@@ -95,7 +98,10 @@ const AdminDashboardCard: React.FC = () => {
           variant="gray"
         />
       </Flex>
-      <Spacer orientation="vertical" outline size="default" />
+      <Spacer orientation="vertical" size="default" />
+      <AdminDashboardChart />
+      <Spacer orientation="vertical" size="default" />
+      
       <AdminDashboardDataTable />
     </Card>
   );
