@@ -68,7 +68,7 @@ export const TeamPlayerColumn = ({
     </>
   );
 };
-export const SuggestedActionColumn = ({ suggestedAction }: any) => {
+export const SuggestedActionColumn = ({ suggestedAction }: any, setModalOpen: any) => {
   return(
     <Button 
       size='small' 
@@ -79,6 +79,7 @@ export const SuggestedActionColumn = ({ suggestedAction }: any) => {
           fontSize: '12px'
         }
       }
+      onClick={() => setModalOpen(true)}
     >
       {`${suggestedAction}`}
     </Button>
