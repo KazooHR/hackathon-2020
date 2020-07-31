@@ -1,7 +1,20 @@
-query HelloWorld {
-  hello
-}
-
-query WhatTime {
-  time
+query CurrentRequest {
+  currentRequest {
+    id
+    subject {
+      id
+      name
+      image
+      image160
+      image30
+      image70
+      jobTitle
+      profileUrl
+      initials
+    }
+    action
+    question
+    value
+    snoozeCount
+  }
 }

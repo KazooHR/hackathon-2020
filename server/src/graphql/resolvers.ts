@@ -19,9 +19,31 @@ const resolvers: Resolvers = {
     },
   }),
   Query: {
-    hello: (_parent, _args, context) =>
-      context.currentUser?.name || "Anonymous! Wait how did you get here!?!?",
-    time: () => new Date(),
+    currentRequest: async (parent, args, context) => {
+      return {
+        id: "82c5ee4a-a18f-569a-9421-c26937a146be",
+        subjectId: "c6e145dd-29ef-5dfa-91c9-5d1f6cff04c8",
+        subject: {
+          id: "c6e145dd-29ef-5dfa-91c9-5d1f6cff04c8",
+          image:
+            "https://s3.amazonaws.com/uifaces/faces/twitter/shinze/128.jpg",
+          image160:
+            "https://s3.amazonaws.com/uifaces/faces/twitter/lisovsky/128.jpg",
+          image30:
+            "https://s3.amazonaws.com/uifaces/faces/twitter/salvafc/128.jpg",
+          image70:
+            "https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/128.jpg",
+          initials: "EG",
+          jobTitle: "Regional Response Engineer",
+          name: "Eleanor Garner",
+          profileUrl: "#",
+        },
+        action: "You recently completed a goal with",
+        question: "What do you think about this person's",
+        value: "credibility",
+        snoozeCount: 0,
+      };
+    },
   },
 };
 

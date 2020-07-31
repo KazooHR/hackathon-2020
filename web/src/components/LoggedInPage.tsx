@@ -2,20 +2,13 @@ import React from "react";
 import { Paper, Typography } from "@material-ui/core";
 import { Logo } from "@kazoohr/confetti";
 
-import { useHelloWorldQuery } from "../graphql/hooks";
 import { PopUpFeedback } from "./PopUpFeedback/Feedback";
+import { useCurrentRequestQuery } from "../graphql/hooks";
 
 const LoggedInPage: React.FC = () => {
-  const { data } = useHelloWorldQuery();
-  const feedback = {
-    id: "123",
-    action: "You recently completed a goal with",
-    subject: "Neha Patel",
-    question: "How would you rate Neha's abilitity to",
-    value: "collaborate",
-    snoozeCount: 0,
-    rating: 2.5,
-  };
+  const { data } = useCurrentRequestQuery();
+  const { currentRequest } = data || {};
+
   return (
     <>
       <Paper style={{ margin: 16, padding: 16 }}>
@@ -25,10 +18,12 @@ const LoggedInPage: React.FC = () => {
             imgUrl="https://www.kazoohr.com/wp-content/themes/kazoo2019/assets/dist/images/Kazoo_Logo_Primary_Green.png"
             redirectTo="https://www.kazoohr.com/"
           />
-          Welcome {data?.hello || "Friend"}!
+          Welcome pal!
         </Typography>
       </Paper>
-      <PopUpFeedback feedback={feedback}></PopUpFeedback>
+      {currentRequest && (
+        <PopUpFeedback feedback={currentRequest}></PopUpFeedback>
+      )}
     </>
   );
 };

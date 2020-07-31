@@ -19,12 +19,20 @@ import { useSnoozeFeedbackMutation } from "../../graphql/hooks";
 export interface PopUpFeedbackProps {
   id: string;
   action: string;
-  subject: string;
+  subject: {
+    id: string;
+    name: string;
+    image160?: string;
+    image30?: string;
+    image70?: string;
+    initials: string;
+  };
   question: string;
   value: string;
-  comment?: string;
-  rating: number;
-  snoozeCount: number;
+
+  // comment?: string;
+  // rating: number;
+  // snoozeCount: number;
 }
 export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -32,22 +40,6 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
   const [rating, setRating] = useState<number>(2.5);
   const { error: showErrorToast, success: showSuccessToast } = useToast();
 
-  const users = [
-    {
-      id: "5c8b4daf-12b1-4448-b975-dec084ed2888",
-      image: "https://s3.amazonaws.com/uifaces/faces/twitter/shinze/128.jpg",
-      image160:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/lisovsky/128.jpg",
-      image30: "https://s3.amazonaws.com/uifaces/faces/twitter/salvafc/128.jpg",
-      image70:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/128.jpg",
-      initials: "ABC",
-      jobTitle: "Regional Response Engineer",
-      name: "Webster Kling",
-      primaryGroup: "target",
-      profileUrl: "#",
-    },
-  ];
   const [snoozeFeedback] = useSnoozeFeedbackMutation({
     variables: { input: feedback.id },
     onCompleted: () => {
@@ -70,10 +62,10 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
         <Spacer size="medium" orientation="vertical" />
         <Flex justifyContent="space-around">
           <Flex>
-            <Facepile users={users} max={1} />
+            <Facepile users={[feedback.subject]} max={1} />
             <Spacer size="small" orientation="horizontal" />
             <Header level="1" size="h2">
-              {feedback.subject}
+              {feedback.subject.name}
             </Header>
           </Flex>
         </Flex>
@@ -93,7 +85,7 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
           defaultValue={rating}
           precision={0.5}
           size="large"
-          onChangeActive={(event: object, value: number) => setRating(value)}
+          onChangeActive={(_event, value) => setRating(value)}
         />
         <Grid>
           <Spacer size="large" orientation="horizontal" />

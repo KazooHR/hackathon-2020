@@ -2,9 +2,14 @@ scalar DateTime
 
 type Person {
   id: ID!
-  firstName: String
-  lastName: String
-  avatarUrl: String
+  name: String!
+  image: String
+  image160: String
+  image30: String
+  image70: String
+  initials: String!
+  jobTitle: String
+  profileUrl: String
 }
 
 type RealtimeFeedbackRequest {
@@ -13,7 +18,7 @@ type RealtimeFeedbackRequest {
   "Person you are supposed to rate"
   subjectId: ID!
 
-  subject: Person
+  subject: Person!
 
   "You were doing this action when we prompted you to give feedback"
   action: String!
@@ -29,9 +34,7 @@ type RealtimeFeedbackRequest {
 }
 
 type Query {
-  hello: String
-  time: DateTime
-  currentRequest: RealtimeFeedbackRequest
+  currentRequest: RealtimeFeedbackRequest!
 }
 
 input RateSomeoneInput {
