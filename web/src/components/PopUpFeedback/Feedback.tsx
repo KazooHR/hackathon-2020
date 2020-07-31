@@ -98,7 +98,7 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
           defaultValue={rating}
           precision={0.5}
           size="large"
-          onChangeActive={(_event, value) => setRating(value)}
+          onChange={(_event, value) => setRating(value as number)}
         />
         <Grid>
           <Spacer size="large" orientation="horizontal" />
