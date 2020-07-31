@@ -1463,4 +1463,10 @@ body {
   background: url("~web/public/Rainbow Base 5.png") fixed no-repeat center top;
   background-size: cover;
 }
+
+.mainContainer {
+  background-color: #fafafa;
+  margin-top: 32px;
+  border-radius: 10px 10px 0 0;
+}
 /*# sourceMappingURL=styles.css.map*/

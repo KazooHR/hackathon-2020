@@ -43,7 +43,7 @@ const AuthenticatedLayout: React.FC = (props) => {
             </Button>
           </Toolbar>
       </AppBar>
-      <Container maxWidth="lg" style={{backgroundColor: '#fafafa'}}>{children as any}</Container>
+      <Container maxWidth="lg" className={"mainContainer"}>{children as any}</Container>
     </ThemeProvider>
   );
 };
