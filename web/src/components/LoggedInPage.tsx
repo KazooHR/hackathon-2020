@@ -3,9 +3,10 @@ import { Paper, Typography } from "@material-ui/core";
 import { Logo } from "@kazoohr/confetti";
 
 import { PopUpFeedback } from "./PopUpFeedback/Feedback";
-import { useCurrentRequestQuery } from "../graphql/hooks";
+import { useCurrentRequestQuery, useWhoAmIQuery } from "../graphql/hooks";
 
 const LoggedInPage: React.FC = () => {
+  const whoamiResult = useWhoAmIQuery();
   const { data } = useCurrentRequestQuery();
   const { currentRequest } = data || {};
 
@@ -18,7 +19,7 @@ const LoggedInPage: React.FC = () => {
             imgUrl="https://www.kazoohr.com/wp-content/themes/kazoo2019/assets/dist/images/Kazoo_Logo_Primary_Green.png"
             redirectTo="https://www.kazoohr.com/"
           />
-          Welcome pal!
+          Welcome {whoamiResult.data?.whoami.name || "pal"}!
         </Typography>
       </Paper>
       {currentRequest && (

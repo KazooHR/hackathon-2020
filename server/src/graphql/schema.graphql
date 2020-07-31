@@ -1,6 +1,7 @@
 scalar DateTime
 
 type Person {
+  "This is their RR 'login_email'"
   id: ID!
   name: String!
   image: String
@@ -35,6 +36,7 @@ type RealtimeFeedbackRequest {
 
 type Query {
   currentRequest: RealtimeFeedbackRequest!
+  whoami: Person!
 }
 
 input RateSomeoneInput {

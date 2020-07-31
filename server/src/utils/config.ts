@@ -10,13 +10,13 @@ const configurationSchema = {
     format: String,
   },
   GCP_PROJECT_ID: {
-    default: "hmm-dev",
+    default: "kazoo-production",
     doc: "GCP Project ID for where this will run",
     env: "GCP_PROJECT_ID",
     format: String,
   },
   GCP_BIGQUERY_DATASET_ID: {
-    default: "",
+    default: "talentiq",
     doc: "GCP BigQuery Dataset ID",
     env: "GCP_BIGQUERY_DATASET_ID",
     format: String,

@@ -18,3 +18,17 @@ query CurrentRequest {
     snoozeCount
   }
 }
+
+query WhoAmI {
+  whoami {
+    id
+    name
+    image
+    image160
+    image30
+    image70
+    jobTitle
+    profileUrl
+    initials
+  }
+}
