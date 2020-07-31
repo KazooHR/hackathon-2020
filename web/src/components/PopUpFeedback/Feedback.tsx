@@ -51,9 +51,7 @@ export function PopUpFeedback({ feedback }: { feedback: PopUpFeedbackProps }) {
   });
 
   return (
-    <Card
-      style={{ "text-align": "center", width: "604px", borderRadius: "10px" }}
-    >
+    <Card style={{ textAlign: "center", width: "604px", borderRadius: "10px" }}>
       <GridItem xl={24}>
         <Spacer size="medium" orientation="vertical" />
         <Header level="3" size="h5">

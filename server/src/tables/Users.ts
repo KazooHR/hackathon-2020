@@ -1,4 +1,5 @@
 import BigQueryTable from "../utils/bigquery";
+import { Person } from "../graphql/types";
 
 export interface User {
   _id: string;
@@ -223,5 +224,19 @@ const Users = new BigQueryTable<User>({
   getByIdQuery: (id: string, dataset: string) =>
     `SELECT * FROM ${dataset}.RR_users WHERE login_email = '${id}';`,
 });
+
+export const userToPerson = (user: User): Person => {
+  return {
+    id: user.login_email,
+    name: `${user.first_name} ${user.last_name}`,
+    image: `https://yei-production-images.s3.amazonaws.com/uploads/user_profile/image/${user._id}/${user.image}`,
+    image160: `https://yei-production-images.s3.amazonaws.com/uploads/user_profile/image/${user._id}/size_160_${user.image}`,
+    image30: `https://yei-production-images.s3.amazonaws.com/uploads/user_profile/image/${user._id}/size_30_${user.image}`,
+    image70: `https://yei-production-images.s3.amazonaws.com/uploads/user_profile/image/${user._id}/size_70_${user.image}`,
+    initials: `${user.first_name.charAt(0)} ${user.last_name.charAt(0)}`,
+    jobTitle: user.title || user.job_title,
+    profileUrl: `https://yei.kazoohr.com/profile/${user._id}`,
+  };
+};
 
 export default Users;

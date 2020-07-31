@@ -1,6 +1,7 @@
 import * as BigQuery from "@google-cloud/bigquery";
 
 import config from "../utils/config";
+import { logger } from "./logger";
 
 export const client = new BigQuery.BigQuery({
   credentials: JSON.parse(config.get("GCP_SERVICE_ACCOUNT_KEY")),
@@ -69,5 +70,22 @@ export default class BigQueryTable<Row extends object = {}> {
     } else {
       return undefined;
     }
+  }
+
+  public async get(conditions: Partial<Row>) {
+    const query = `
+    SELECT *
+    FROM ${this.dataset}.${this.tableName}
+    WHERE 1=1
+      ${Object.entries(conditions)
+        .map(([column, value]) => `AND ${column} = '${value}'`)
+        .join("        \n")}
+  `;
+
+    logger.info("Making bigquery query", { query });
+
+    const [results] = await client.query(query);
+
+    return results as Array<Row>;
   }
 }
