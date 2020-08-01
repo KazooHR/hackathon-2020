@@ -10,7 +10,7 @@ import {
 
 const AdminDashboardDataTable: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  
+
   const baseUrl =
     "https://yeistack-develop.s3.amazonaws.com/uploads/user_profile/image/";
   const avatarUrls = [
@@ -39,57 +39,55 @@ const AdminDashboardDataTable: React.FC = () => {
           },
           {
             header: "collaboration rating",
-            renderCell: (data: any) => CollaborationColumn(data),
-            alignment: "right",
+            renderCell: (data: any) => CollaborationColumn(data)
           },
           {
             header: "team player rating",
-            renderCell: (data: any) => TeamPlayerColumn(data),
-            alignment: "right",
+            renderCell: (data: any) => TeamPlayerColumn(data)
           },
           {
-            header: "suggested action",
+            header: " ",
             renderCell: (data: any) => SuggestedActionColumn(data, setModalOpen),
             alignment: "right",
           },
         ]}
         data={
           [
-            { 
-              url: avatarUrls[0], 
-              name: 'Akim Stewart', 
+            {
+              url: avatarUrls[0],
+              name: 'Akim Stewart',
               collaboratingRating: '3.75',
               trendUp: true,
               teamPlayerRating: '4.5',
               teamPlayerTrendUp: true,
               suggestedAction: 'Schedule Sync-Up'
-            }, 
-            { 
-              url: avatarUrls[1], 
-              name: 'Cassidy Jones', 
+            },
+            {
+              url: avatarUrls[1],
+              name: 'Cassidy Jones',
               collaboratingRating: '1',
               trendUp: false,
               teamPlayerRating: '2',
               teamPlayerTrendUp: true,
               suggestedAction: 'Special Recognition'
-            }, 
-            { 
-              url: avatarUrls[2], 
-              name: 'Angela Lau', 
+            },
+            {
+              url: avatarUrls[2],
+              name: 'Angela Lau',
               collaboratingRating: '3.75',
               trendUp: true,
               teamPlayerRating: '4.5',
               teamPlayerTrendUp: true,
               suggestedAction: 'Create Behavior Bonus'
-            }, 
-            { 
-              url: avatarUrls[3], 
-              name: 'Gina Goodrich', 
+            },
+            {
+              url: avatarUrls[3],
+              name: 'Gina Goodrich',
               collaboratingRating: '3.75',
               trendUp: true,
               teamPlayerRating: '1.75',
               teamPlayerTrendUp: false,
-              suggestedAction: 'Assign Goal'      
+              suggestedAction: 'Assign Goal'
             }
           ]
         }

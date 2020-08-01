@@ -1485,5 +1485,11 @@ body {
   left: -84px;
   width: 290px;
 }
+.profile {
+  display: flex;
+}
+.profileName {
+  align-self: center;
+}
 
 /*# sourceMappingURL=styles.css.map*/

@@ -14,21 +14,21 @@ import styles from "./AdminDataTableColumns.scss";
 
 export const EmployeeColumn = ({ url, name }: any) => {
   return (
-    <Grid>
-      <GridItem width={8}>
-        <ProfilePic
-          dimensions={undefined}
-          size="MEDIUM"
-          user={{
-            image160: `${url}`,
-            name: `${name}`,
-          }}
+    <div className="profile">
+      <ProfilePic
+        dimensions={undefined}
+        size="MEDIUM"
+        user={{
+          image160: `${url}`,
+          name: `${name}`,
+        }}
+      />
+      <Spacer
+        orientation="horizontal"
+        size="small"
         />
-      </GridItem>
-      <GridItem width={16}>
-        <Text size='small'>{`${name}`}</Text>
-      </GridItem>
-    </Grid>
+      <Text size='small' className="profileName">{`${name}`}</Text>
+    </div>
   );
 };
 export const CollaborationColumn = ({ collaboratingRating, trendUp }: any) => {
@@ -39,7 +39,7 @@ export const CollaborationColumn = ({ collaboratingRating, trendUp }: any) => {
         orientation="horizontal"
         size="small"
       />
-      <Icon 
+      <Icon
         icon={trendUp ? 'trend_up' : 'trend_down'}
         className={styles['trend']}
         color={trendUp ? '#00A861' : '#F3224D'}
@@ -59,7 +59,7 @@ export const TeamPlayerColumn = ({
         orientation="horizontal"
         size="small"
       />
-      <Icon 
+      <Icon
         icon={teamPlayerTrendUp ? 'trend_up' : 'trend_down'}
         className={styles['trend']}
         color={teamPlayerTrendUp ? '#00A861' : '#F3224D'}
@@ -70,12 +70,12 @@ export const TeamPlayerColumn = ({
 };
 export const SuggestedActionColumn = ({ suggestedAction }: any, setModalOpen: any) => {
   return(
-    <Button 
-      size='small' 
+    <Button
+      size='small'
       style={
-        { 
-          color: '#2A5CDB', 
-          border: '1px solid #2A5CDB', 
+        {
+          color: '#2A5CDB',
+          border: '1px solid #2A5CDB',
           fontSize: '12px'
         }
       }
