@@ -1492,13 +1492,15 @@ body {
   align-self: center;
 }
 
-.syncUpDrawer button {
+/* .syncUpDrawer button {
   display: none !important;
-}
+} */
 
-.syncUpDrawer div {
+.syncUpDrawer>div {
   padding: 0 !important;
   overflow: hidden !important;
+  right: -12px;
+  border-radius: 0 10px 0 0;
 }
 
 .hiddenSyncUpDrawer * {
