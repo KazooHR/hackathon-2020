@@ -14,7 +14,7 @@ import {
 import AdminDashboardDataTable from "./AdminDashboardDataTable";
 import AdminDashboardChart from "./AdminDashboardChart";
 
-const AdminDashboardCard: React.FC = () => {
+export function AdminDashboardCard({ setDrawerOpen }: { setDrawerOpen: (open: boolean) => void }) {
   return (
     <Card>
       <Flex justifyContent="space-between">
@@ -108,7 +108,7 @@ const AdminDashboardCard: React.FC = () => {
       <AdminDashboardChart />
       <Spacer orientation="vertical" size="default" />
 
-      <AdminDashboardDataTable />
+      <AdminDashboardDataTable setDrawerOpen={setDrawerOpen}/>
     </Card>
   );
 };

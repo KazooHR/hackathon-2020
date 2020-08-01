@@ -3,8 +3,6 @@ import React from "react";
 import {
   Button,
   Icon,
-  Grid,
-  GridItem,
   ProfilePic,
   Spacer,
   Text,
@@ -68,7 +66,7 @@ export const TeamPlayerColumn = ({
     </>
   );
 };
-export const SuggestedActionColumn = ({ suggestedAction }: any, setModalOpen: any) => {
+export const SuggestedActionColumn = ({ suggestedAction }: any, setDrawerOpen: any) => {
   return(
     <Button
       size='small'
@@ -79,7 +77,7 @@ export const SuggestedActionColumn = ({ suggestedAction }: any, setModalOpen: an
           fontSize: '12px'
         }
       }
-      onClick={() => (suggestedAction === 'Schedule Sync-Up' && setModalOpen(true))}
+      onClick={() => (suggestedAction === 'Schedule Sync-Up' && setDrawerOpen(true))}
     >
       {`${suggestedAction}`}
     </Button>
