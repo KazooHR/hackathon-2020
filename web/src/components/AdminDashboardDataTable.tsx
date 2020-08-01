@@ -55,25 +55,25 @@ export function AdminDashboardDataTable({ setDrawerOpen }: { setDrawerOpen: (ope
             name: 'Akim Stewart',
             collaboratingRating: '3.75',
             trendUp: true,
-            teamPlayerRating: '4.5',
+            teamPlayerRating: '4.50',
+            teamPlayerTrendUp: true,
+            suggestedAction: 'Send Special Recognition'
+          },
+          {
+            url: avatarUrls[2],
+            name: 'Angela Lau',
+            collaboratingRating: '1.02',
+            trendUp: false,
+            teamPlayerRating: '2.06',
             teamPlayerTrendUp: true,
             suggestedAction: 'Schedule Sync-Up'
           },
           {
             url: avatarUrls[1],
             name: 'Cassidy Jones',
-            collaboratingRating: '1',
-            trendUp: false,
-            teamPlayerRating: '2',
-            teamPlayerTrendUp: true,
-            suggestedAction: 'Special Recognition'
-          },
-          {
-            url: avatarUrls[2],
-            name: 'Angela Lau',
-            collaboratingRating: '3.75',
+            collaboratingRating: '3.45',
             trendUp: true,
-            teamPlayerRating: '4.5',
+            teamPlayerRating: '4.53',
             teamPlayerTrendUp: true,
             suggestedAction: 'Create Behavior Bonus'
           },
