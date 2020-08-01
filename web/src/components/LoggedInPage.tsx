@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Logo, Card, PageLayoutWide, Header } from "@kazoohr/confetti";
 
-import {PopUpFeedback, PopUpFeedbackProps} from "./PopUpFeedback/Feedback";
+import {PopUpFeedback} from "./PopUpFeedback/Feedback";
 import { useCurrentRequestQuery, useWhoAmIQuery } from "../graphql/hooks";
 
 const LoggedInPage: React.FC = () => {
