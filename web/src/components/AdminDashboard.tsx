@@ -11,7 +11,7 @@ const AdminDashboard: React.FC = () => {
       <AdminDashboardHeader />
       <AdminDashboardCard setDrawerOpen={setDrawerOpen}/>
       <button onClick={() => setDrawerOpen(false)}>
-        <div className="syncUpDrawer">
+        <div className={drawerOpen ? "syncUpDrawer" : "hiddenSyncUpDrawer"}>
           <Drawer
             ariaLabel="syncUpDrawer"
             isOpen={drawerOpen}

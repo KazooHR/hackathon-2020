@@ -1501,4 +1501,8 @@ body {
   overflow: hidden !important;
 }
 
+.hiddenSyncUpDrawer * {
+  display: none !important;
+}
+
 /*# sourceMappingURL=styles.css.map*/
