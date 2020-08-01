@@ -196,6 +196,8 @@ export function PopUpFeedback({ currentFeedback, isOpen , setIsOpen, refetch}: {
                 rateSomeone()
                 const newFeedback = await refetch();
                 setFeedback(newFeedback?.data.currentRequest);
+                setComment("");
+                setRating(2.5);
                 setIsOpen(true);
               }} variant="destructive" style={{ backgroundColor: "#fd5d4b" }}>
                 Submit Feedback
@@ -209,6 +211,8 @@ export function PopUpFeedback({ currentFeedback, isOpen , setIsOpen, refetch}: {
                     snoozeFeedback()
                     const newFeedback = await refetch();
                     setFeedback(newFeedback?.data.currentRequest);
+                    setComment("");
+                    setRating(2.5);
                     setIsOpen(true);
                   }}
                   variant="system"
