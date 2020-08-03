@@ -185,7 +185,7 @@ export function PopUpFeedback({ currentFeedback, isOpen , setIsOpen, refetch}: {
             <GridItem xl={24}>
               <Text>
               <span style={{ color: "#666666" }}>
-                <i>{"Your feedback is shared with Neha anonymously."}</i>
+                <i>{`Your feedback is shared with ${feedback.subject.name} anonymously.`}</i>
               </span>
               </Text>
               <Spacer size="large" orientation="vertical" />
